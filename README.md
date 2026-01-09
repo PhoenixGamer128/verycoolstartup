@@ -51,7 +51,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - I will show the basic structure of my startup.
 - **CSS** - This will determine how my startup will look, I will make it polished while also simple.
-- **React** - This will allow me to update my events in real time such as adding a new event to the calendar when a submit button is clicked upon adding a new event.
+- **React** - This will allow me to update my events in real time such as adding a new event to the calendar when a submit button is clicked upon adding a new event. This will also show different calendars from shared events by different people.
 - **Service** - Backend service will add submitted events to the database, pull added events from the database, as well as sharing events with other through idenitfication (like an email address).
 - **DB/Login** - Description here
 - **WebSocket** - Description here
