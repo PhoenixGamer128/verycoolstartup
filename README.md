@@ -49,7 +49,7 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
+- **HTML** - I will show the basic structure of my startup.
 - **CSS** - Description here
 - **React** - Description here
 - **Service** - Description here
