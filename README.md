@@ -41,9 +41,9 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Add customizable events to your calendar.
+- Edit and color code types of events.
+- Share events with friends and family.
 
 ### Technologies
 
