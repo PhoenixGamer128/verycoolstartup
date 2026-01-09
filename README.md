@@ -50,7 +50,7 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - I will show the basic structure of my startup.
-- **CSS** - Description here
+- **CSS** - This will determine how my startup will look, I will make it polished while also simple.
 - **React** - Description here
 - **Service** - Description here
 - **DB/Login** - Description here
