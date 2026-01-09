@@ -51,7 +51,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - I will show the basic structure of my startup.
 - **CSS** - This will determine how my startup will look, I will make it polished while also simple.
-- **React** - Description here
+- **React** - This will allow me to update my events in real time such as adding a new event to the calendar when a submit button is clicked upon adding a new event.
 - **Service** - Description here
 - **DB/Login** - Description here
 - **WebSocket** - Description here
