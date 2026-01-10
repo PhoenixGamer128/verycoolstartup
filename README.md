@@ -34,18 +34,15 @@ Have you ever had a stressful day because of all the things that you had to do, 
 
 The design will have a main page with the calendar with buttons changing the page (or as an overlay) for specific actions. Events are color-coded, marked by shapes, to show what type of event it is. The design is to be simple to allow users not be overwhelmed by lots of information
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
-- Add customizable events to your calendar.
-- Edit and color code types of events.
-- Share events with friends and family.
+- Login as user with all saved information
+- Add customizable events to your calendar
+- Events can be color-coded for easy finding
+- Simplistic design for easy readability
+- Share events with friends and family
+- See event changes in real time
 
 ### Technologies
 
