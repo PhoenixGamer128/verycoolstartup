@@ -10,8 +10,10 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 52.73.68.210
+Command to ssh:
+ssh -i ~/Desktop/"BYU 125"/"CS 260"/vitoria.pem ubuntu@52.73.68.210
+I would like to remember how to set up a server, or at least remember the basics so that in the future I can do my own startup if I do out outside this course.
 
 ## Caddy
 
