@@ -23,6 +23,7 @@ No problems worked just like it said in the [instruction](https://github.com/web
 ## HTML
 
 I would like to remember how to make all the simple HTML elements. HTML seems very simple, you put things where you want them, and it shows up exactly the way you wrote it, making it very intuitive for how the structure will look like.
+I learned how to deploy a project from a directory, specifically using the deployFiles.sh file for caddy.
 
 ## CSS
 
