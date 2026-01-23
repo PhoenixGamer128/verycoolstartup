@@ -67,11 +67,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - I completed this part of the deliverable.
 - [x] **Links** - I completed this part of the deliverable.
 - [x] **Text** - I completex this part of the deliverable.
-- [x] **3rd party API placeholder** - I'm unsure if I was supposed to say which API each page was to use, but I added a table to access the database and a compare page for real-time changes between events with friends.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [ ] **3rd party API placeholder** - XXXX
+- [x] **Images** - I completed this part of the deliverable.
+- [x] **Login placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - This would be the calender page with events.
+- [x] **WebSocket placeholder** - This is the compare page to see real-time changes with events with friends
 
 ## 🚀 CSS deliverable
 
