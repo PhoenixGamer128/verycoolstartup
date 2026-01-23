@@ -63,11 +63,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I completed this part of the deliverable.
+- [x] **Proper HTML element usage** - I completed this part of the deliverable.
+- [x] **Links** - I completed this part of the deliverable.
+- [x] **Text** - I completex this part of the deliverable.
+- [x] **3rd party API placeholder** - I'm unsure if I was supposed to say which API each page was to use, but I added a table to access the database and a compare page for real-time changes between events with friends.
 - [ ] **Images** - I did not complete this part of the deliverable.
 - [ ] **Login placeholder** - I did not complete this part of the deliverable.
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
