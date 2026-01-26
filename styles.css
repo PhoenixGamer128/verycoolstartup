@@ -1,6 +1,9 @@
 #nav-bar {
     display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    border: 1px solid black;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     background-color: lightskyblue;
+    border-bottom: 1px solid black;
+    list-style-type: none;
+    list-style: none;
+    margin:0px;
 }
