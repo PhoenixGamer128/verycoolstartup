@@ -8,22 +8,33 @@ body {
 
 nav ul {
     margin:0px;
-    padding:10px;
     display:flex;
-    grid-template-columns: repeat(auto-fit, 100px);
     background-color: lightskyblue;
     border-bottom: 1px solid black;
     list-style: none;
-    text-align: center;
-}
-
-nav ul li {
     padding-left: 10px;
     padding-right: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
 }
 
 #nav-logo {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    text-align: center;
+    padding-left: 30px;
+}
+
+nav .button {
+    display:inline-block;
+    background-color: lightskyblue;
+    border:none;
+    color:white;
+    text-align: center;
+    cursor: pointer;
+    padding: 16px 16px;
+}
+
+nav .button:hover {
+    background-color: rgb(119, 179, 216);
 }
