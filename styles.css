@@ -3,21 +3,32 @@ body {
 }
 
 :root {
-    --navPadding:16px;
+    --navPadding:6px 16px;
+    --baseColor: #3BC1A8;
 }
 
 #sign-in {
     margin: 3cm 20%;
-    border: 1px solid #ccc;
+    border: 1px solid var(--baseColor);
+    background-color: var(--baseColor);
+    box-shadow: 2px 2px 10px gray;
     align-items: center;
-    justify-content: center;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 30px;
+    border-radius: 15px;
 }
 
-#sign-in input {
+.sign-in input {
     margin-bottom: 5px;
+    border-radius: 5px;
+    height: 20px;
+    width: 200px;
+}
+
+#sign-in-submit {
+    width: 80px;
+    height: 30px
 }
 
 .content {
@@ -27,11 +38,10 @@ body {
 nav ul {
     margin:0px;
     display:flex;
-    background-color: lightskyblue;
+    background-color: var(--baseColor);
     border-bottom: 1px solid black;
     list-style: none;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 10px;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
 }
@@ -49,7 +59,7 @@ nav li:not(:last-child) {
 
 nav .button {
     display:inline-block;
-    background-color: lightskyblue;
+    background-color: var(--baseColor);
     border:none;
     text-align: center;
     cursor: pointer;
@@ -58,5 +68,5 @@ nav .button {
 }
 
 nav .button:hover {
-    background-color: rgb(119, 179, 216);
+    background-color: var(--baseColor);
 }
