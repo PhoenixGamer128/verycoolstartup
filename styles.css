@@ -1,10 +1,15 @@
-body {
-    margin: 0px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
     --navPadding:6px 16px;
     --baseColor: #3BC1A8;
+    --textColor: white;
+    --baseFont: 'Rubik', sans-serif;
+}
+
+body {
+    margin: 0px;
+    font-family: var(--baseFont);
 }
 
 #sign-in {
@@ -42,7 +47,7 @@ nav ul {
     border-bottom: 1px solid black;
     list-style: none;
     padding: 10px 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--baseFont);
     align-items: center;
 }
 
@@ -51,7 +56,7 @@ nav li:not(:last-child) {
 }
 
 #nav-logo {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--baseFont);
     font-size: var(--navPadding);
     text-align: center;
     padding: var(--navPadding);
@@ -69,4 +74,12 @@ nav .button {
 
 nav .button:hover {
     background-color: var(--baseColor);
+}
+
+.bubble {
+    font-family: var(--baseFont);
+    background-color: var(--baseColor);
+    border-radius: 10px;
+    padding:5px;
+    color: var(--textColor);
 }
