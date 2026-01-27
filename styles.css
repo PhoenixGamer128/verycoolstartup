@@ -7,11 +7,17 @@ body {
 }
 
 #sign-in {
-    margin: 0 20%;
+    margin: 3cm 20%;
     border: 1px solid #ccc;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+#sign-in input {
+    margin-bottom: 5px;
 }
 
 .content {
