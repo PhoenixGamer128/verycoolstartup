@@ -3,7 +3,7 @@
 :root {
     --navPadding:6px 16px;
     --baseColor: #ff5151;
-    --hoverColor: #e83333;
+    --darkColor: #e83333;
     --pressColor: #EDE8DC;
     --textColor: white;
     --baseFont: 'Rubik', sans-serif;
@@ -61,7 +61,7 @@ input[type='submit'] {
 }
 
 input[type='submit']:hover {
-    background-color: var(--hoverColor);
+    background-color: var(--darkColor);
 }
 
 nav {
@@ -79,6 +79,8 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid var(--darkColor);
+    padding: 5px;
 }
 
 nav ul {
@@ -134,7 +136,7 @@ nav .button:hover {
 }
 
 .action-buttons .bubble:hover {
-    background-color: var(--hoverColor);
+    background-color: var(--darkColor);
 }
 
 .action-buttons .bubble.bubble:active {
@@ -149,4 +151,17 @@ nav .button:hover {
     margin: 5px;
     padding: 0;
     width: 20%;
+}
+
+table {
+    border: 2px solid black;
+    padding: 5px
+}
+
+th:not(:last-child), td:not(:last-child) {
+    border-right: 1px solid lightgray;
+    padding-right: 20px;
+}
+
+th, td {
 }
