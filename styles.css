@@ -2,17 +2,20 @@
 
 :root {
     --navPadding:6px 16px;
-    --baseColor: #3BC1A8;
-    --hoverColor: #249E94;
-    --pressColor: #0C7779;
+    --baseColor: #ff5151;
+    --hoverColor: #91ADC8;
+    --pressColor: #EDE8DC;
     --textColor: white;
     --baseFont: 'Rubik', sans-serif;
-    --highlightColor: #76E8BA;
+    --highlightColor: #FFFFFF;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0px;
     font-family: var(--baseFont);
+    background-color: var(--highlightColor);
 }
 
 #sign-in {
@@ -25,6 +28,8 @@ body {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 15px;
 }
 
@@ -40,8 +45,20 @@ body {
     height: 30px
 }
 
-.content {
+nav {
+    flex: 0 0 auto;
+}
+
+main {
+    flex: 1;
     margin: 8px;
+}
+
+footer {
+    flex: 0 0 auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 nav ul {
