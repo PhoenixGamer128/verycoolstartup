@@ -3,11 +3,11 @@
 :root {
     --navPadding:6px 16px;
     --baseColor: #ff5151;
-    --hoverColor: #91ADC8;
+    --hoverColor: #e83333;
     --pressColor: #EDE8DC;
     --textColor: white;
     --baseFont: 'Rubik', sans-serif;
-    --highlightColor: #FFFFFF;
+    --highlightColor: #ff6c6c;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
     flex-direction: column;
     margin: 0px;
     font-family: var(--baseFont);
-    background-color: var(--highlightColor);
+    background-color: white;
 }
 
 #sign-in {
@@ -33,16 +33,35 @@ body {
     border-radius: 15px;
 }
 
-.sign-in input {
-    flex: 1;
-    margin-bottom: 5px;
+input {
     border-radius: 5px;
     height: 20px;
+    font-family: sans-serif, Arial, Helvetica;
+    border: 1px solid black;
+    padding: 0 5px;
 }
 
-#sign-in-submit {
+form {
+    gap:5px;
+    display:flex;
+    flex-direction: column;
+}
+
+form input {
+    min-width: 0;
+    width: calc(100% - 10px);
+}
+
+input[type='submit'] {
+    flex: 0 0 40px;
+    margin: 5px auto 0;
     width: 80px;
-    height: 30px
+
+    background-color: var(--baseColor);
+}
+
+input[type='submit']:hover {
+    background-color: var(--hoverColor);
 }
 
 nav {
@@ -51,10 +70,11 @@ nav {
 
 main {
     flex: 1;
-    margin: 8px;
+    margin: 20px;
 }
 
 footer {
+    background-color: var(--baseColor);
     flex: 0 0 auto;
     position: fixed;
     bottom: 0;
