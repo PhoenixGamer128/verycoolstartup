@@ -144,13 +144,17 @@ nav .button:hover {
 }
 
 .add-event {
+    background-color: var(--baseColor);
+    padding: 5px;
+    width: 200px;
     margin: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 
 .add-event > * {
     margin: 5px;
     padding: 0;
-    width: 20%;
 }
 
 #event-name {
