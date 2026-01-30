@@ -147,10 +147,39 @@ nav .button:hover {
     margin: 5px;
 }
 
-.add-event input {
+.add-event > * {
     margin: 5px;
     padding: 0;
     width: 20%;
+}
+
+#event-name {
+    display:flex;
+}
+
+#event-name input[type="text"] {
+    flex: 1; 
+    margin-right: 5px;
+}
+
+#event-name input[type="color"] {
+    flex: 0 0 20px;
+    padding: 0;
+    border: 0;
+    height: auto;
+    
+}
+
+#time-picker {
+    display: flex;
+}
+
+#time-picker div:not(:last-child) {
+    margin-right:5px;
+}
+
+#availability {
+    width: 1;
 }
 
 table {

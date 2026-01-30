@@ -23,9 +23,30 @@
 
             <div class="add-event">
                 <form>
-                    <input type="text" placeholder="Event Title">
+                    <div id="event-name">
+                        <input type="text" placeholder="Event Title">
+                        <input type="color" value="#FFFFFF">
+                    </div>
                     <input type="date" value="2026-12-31">
-                    <input type="time" value="23:59">
+                    <div id="time-picker">
+                        <div>
+                            <label for="start-time">Start time</label>
+                            <input type="time" id="start-time" value="00:00">
+                        </div>
+                        <div>
+                            <label for="end-time">End time</label>
+                           <input type="time" id="end-time" value="23:59">
+                        </div>
+                    </div>
+                    <input type="text" placeholder="Location">
+                    <textarea placeholder="Description"></textarea>
+                    <div>
+                        <label for="availability">Availability:</label>
+                        <select id="availability">
+                            <option selected>Busy</option>
+                            <option>Free</option>
+                        </select>
+                    </div>
                     <input type="submit">
                 </form>
             </div>
