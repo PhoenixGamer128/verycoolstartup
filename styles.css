@@ -2,13 +2,17 @@
 
 :root {
     --navPadding:6px 16px;
-    --baseColor: #ff5151;
-    --darkColor: #e83333;
+    --baseColor: skyblue;
+    --buttonColor: lightblue;
+    --navColor: lightgray;
+    --footerColor: lightgray;
+    --darkColor: rgb(80, 154, 183);
     --pressColor: #EDE8DC;
     --textColor: white;
     --baseFont: 'Rubik', sans-serif;
     --highlightColor: #ff6c6c;
 }
+
 
 body {
     display: flex;
@@ -18,42 +22,31 @@ body {
     background-color: white;
 }
 
-#front-image {
-    width: 1;
-
+main {
+    padding: 20px;
 }
 
-#sign-in {
-    overflow:hidden;
-    display: flex;
-    flex-direction: column;
-    margin-left:20%;
-    margin-right:20%;
-    margin-top: 1cm;
+
+
+.basic-box {
     background-color: var(--baseColor);
     box-shadow: 2px 2px 10px gray;
-    align-items: center;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
     border-radius: 15px;
+    padding: 10px;
+    overflow:hidden;
 }
 
-input {
-    border-radius: 5px;
+
+
+input, select {
     height: 20px;
     font-family: sans-serif, Arial, Helvetica;
     border: 1px solid black;
+    border-radius: 5px;
     padding: 0 5px;
+    margin: 2px 0;
 }
 
-form {
-    gap:5px;
-    display:flex;
-    flex-direction: column;
-}
 
 form input {
     min-width: 0;
@@ -61,11 +54,10 @@ form input {
 }
 
 input[type='submit'] {
-    flex: 0 0 40px;
     margin: 5px auto 0;
     width: 80px;
-
-    background-color: var(--baseColor);
+    height: 40px;
+    background-color: var(--buttonColor);
 }
 
 input[type='submit']:hover {
@@ -74,27 +66,26 @@ input[type='submit']:hover {
 
 nav {
     flex: 0 0 auto;
-}
-
-main {
-    flex: 1;
-    margin: 20px;
+    background-color: var(--navColor);
 }
 
 footer {
-    background-color: var(--baseColor);
-    flex: 0 0 auto;
+    background-color: var(--footerColor);
     position: fixed;
     bottom: 0;
     width: 100%;
-    border-top: 1px solid var(--darkColor);
+    border-top: 1px solid black;
     padding: 5px;
+}
+
+#banner {
+    width: 100%;
+
 }
 
 nav ul {
     margin:0px;
     display:flex;
-    background-color: var(--baseColor);
     border-bottom: 1px solid black;
     list-style: none;
     padding: 10px 10px;
@@ -113,7 +104,6 @@ nav li:not(:last-child) {
 
 nav .button {
     display:inline-block;
-    background-color: var(--baseColor);
     border:none;
     text-align: center;
     cursor: pointer;
@@ -123,128 +113,4 @@ nav .button {
 
 nav .button:hover {
     background-color: var(--baseColor);
-}
-
-.action-buttons {
-    display: flex;
-}
-
-.action-buttons {
-    display: flex;
-    width: 30%;
-    margin: 0;
-}
-
-.action-buttons .bubble {
-    margin: 5px;
-    flex: 1;
-    background-color: var(--baseColor);
-    border-radius: 5px;
-    color: var(--textColor);
-}
-
-.action-buttons .bubble:hover {
-    background-color: var(--darkColor);
-}
-
-.action-buttons .bubble.bubble:active {
-    background-color: var(--pressColor);
-}
-
-.add-event {
-    background-color: var(--baseColor);
-    padding: 5px;
-    width: 200px;
-    margin: 5px;
-    border: 1px solid black;
-    border-radius: 8px;
-}
-
-.add-event > * {
-    margin: 5px;
-    padding: 0;
-}
-
-#event-name {
-    display:flex;
-}
-
-#event-name input[type="text"] {
-    flex: 1; 
-    margin-right: 5px;
-}
-
-#event-name input[type="color"] {
-    flex: 0 0 20px;
-    padding: 0;
-    border: 0;
-    height: auto;
-    
-}
-
-#time-picker {
-    display: flex;
-}
-
-#time-picker div:not(:last-child) {
-    margin-right:5px;
-}
-
-#availability {
-    width: 1;
-}
-
-.event-content {
-    background-color: var(--highlightColor);
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    border: 1px solid black;
-    border-radius: 8px;
-    gap: 15px;
-    padding: 5px;
-    max-width: 400px;
-    height: 64px;
-}
-
-.event-info {
-  display: flex;
-  flex-direction: column;
-  container-type: size;
-  gap: 5px;
-  padding-right: 10px;
-  justify-content: space-between;
-  overflow: hidden;
-}
-
-#info-detailed {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.event-time {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-#event-desc {
-    font-size: auto;
-    overflow: hidden;
-}
-
-.compare-calendars {
-    display: flex;
-    gap: 2px
-}
-
-.compare-calendars div{
-    flex: 1;
-}
-
-
-@container (max-height: 63px) {
-    #event-desc {
-        display:none;
-    }
 }

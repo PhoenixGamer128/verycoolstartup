@@ -1,0 +1,110 @@
+/* Page-specific styling */
+
+#front-page {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+}
+
+#sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+}
+
+#front-image {
+    padding-bottom: 60px;
+}
+
+#add-event {
+    max-width: 200px;
+    overflow: hidden;
+}
+
+#event-name {
+    display:flex;
+}
+
+#event-name input[type="text"] {
+    flex: 1; 
+    margin-right: 5px;
+}
+
+#event-name input[type="color"] {
+    flex: 0 0 20px;
+    padding: 0;
+    border: 0;
+    height: auto;
+}
+
+#time-picker {
+    display: flex;
+}
+
+#time-picker div:not(:last-child) {
+    margin-right:5px;
+}
+
+#availability {
+    width: 1;
+}
+
+.content {
+    /* Calendar page content styling */
+}
+
+.compare-calendars {
+    display: flex;
+    gap: 2px;
+}
+
+.compare-calendars div {
+    flex: 1;
+}
+
+.event-content {
+    background-color: var(--highlightColor);
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    border: 1px solid black;
+    border-radius: 8px;
+    gap: 15px;
+    padding: 5px;
+    max-width: 400px;
+    height: 64px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    container-type: size;
+    gap: 5px;
+    padding-right: 10px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#info-detailed {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.event-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#event-desc {
+    font-size: auto;
+    overflow: hidden;
+}
+
+@container (max-height: 63px) {
+    #event-desc {
+        display:none;
+    }
+}

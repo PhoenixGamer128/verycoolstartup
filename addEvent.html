@@ -5,6 +5,7 @@
             Path for Eternity
         </title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="page-styles.css">
     </head>
 
     <body>
@@ -23,7 +24,7 @@
         <main>
             <h1>Add event</h1>
 
-            <div class="add-event">
+            <div id="add-event" class="basic-box">
                 <form>
                     <div id="event-name">
                         <input type="text" placeholder="Event Title">
@@ -49,7 +50,8 @@
                             <option>Free</option>
                         </select>
                     </div>
-                    <input type="submit">
+                    <button>Add from Google Calendar API</button>
+                    <div><input type="submit"></div>
                 </form>
             </div>
         </main>
