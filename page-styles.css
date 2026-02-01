@@ -125,6 +125,11 @@
     overflow: hidden;
 }
 
+.tasks ul li {
+    width: 300px;
+    margin-bottom: 3px;
+}
+
 @container (max-height: 63px) {
     #event-desc {
         display:none;
