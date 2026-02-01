@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
-    --navPadding:6px 16px;
     --baseColor: skyblue;
     --buttonColor: lightblue;
     --navColor: lightgray;
@@ -15,7 +14,7 @@
 
 
 body {
-    display: flex;
+    display:flex;
     flex-direction: column;
     margin: 0px;
     font-family: var(--baseFont);
@@ -24,6 +23,7 @@ body {
 
 main {
     padding: 20px;
+    flex: 1;
 }
 
 
@@ -98,20 +98,21 @@ nav li:not(:last-child) {
 }
 
 #nav-logo {
-    font-size: var(--navPadding);
     text-align: center;
-    padding: var(--navPadding);
+    padding: 6px 10px;
 }
 
-nav .button {
+nav ul li {
     display:inline-block;
     border:none;
     text-align: center;
     cursor: pointer;
-    padding: var(--navPadding);
+    padding: 1px 8px;
     text-decoration: none;
+    height: 100%;
+    width: 65px;
 }
 
-nav .button:hover {
-    background-color: var(--baseColor);
+.button:hover {
+    background-color: rgba(0,0,0,.1);
 }

@@ -51,10 +51,6 @@
     width: 1;
 }
 
-.content {
-    /* Calendar page content styling */
-}
-
 .compare-calendars {
     display: flex;
     gap: 2px;
@@ -64,13 +60,42 @@
     flex: 1;
 }
 
+#calendar-page {
+    display:flex;
+    justify-content: space-between;
+}
+
+#calendar-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#calendar-title {
+    display:flex;
+    justify-content: space-between;
+}
+
+#calendar-title button {
+    margin: 16px 0;
+    display: none;
+}
+
+#event-block {
+    display:flex;
+}
+
 .event-content {
+    flex: 0 0 400px;
     display: grid;
     grid-template-columns: 50px 1fr;
     gap: 15px;
     padding: 5px;
-    max-width: 400px;
     height: 64px;
+}
+
+#taskbar {
+    flex: 0 0 200px;
 }
 
 .event-info {
@@ -103,5 +128,14 @@
 @container (max-height: 63px) {
     #event-desc {
         display:none;
+    }
+}
+
+@media (max-width: 700px) {
+    #taskbar {
+        display: none;
+    }
+    #calendar-title button {
+        display:block;
     }
 }
