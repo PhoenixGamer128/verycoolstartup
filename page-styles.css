@@ -18,21 +18,30 @@
     padding-bottom: 60px;
 }
 
-#add-event {
+#add-page {
+    display:flex;
+    gap: 5px;
+}
+
+#add-event, #add-task {
     max-width: 200px;
     overflow: hidden;
 }
 
-#event-name {
+#add-task {
+    height: 150px;
+}
+
+#event-name, #task-name {
     display:flex;
 }
 
-#event-name input[type="text"] {
+#event-name input[type="text"], #task-name input[type="text"] {
     flex: 1; 
     margin-right: 5px;
 }
 
-#event-name input[type="color"] {
+#event-name input[type="color"], #task-name input[type="color"] {
     flex: 0 0 20px;
     padding: 0;
     border: 0;
@@ -126,8 +135,9 @@
 }
 
 .tasks ul li {
-    width: 300px;
+    max-width: 300px;
     margin-bottom: 3px;
+    margin-right: 16px;
 }
 
 @container (max-height: 63px) {
