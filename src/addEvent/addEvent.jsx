@@ -5,51 +5,51 @@ export function AddEvent() {
         <main>
             <h1>Add event</h1>
             <div id="add-page">
-                <div id="add-event" class="basic-box">
+                <div id="add-event" className="basic-box">
                     <form>
                         <div id="event-name">
                             <input type="text" placeholder="Event Title" />
-                            <input type="color" value="#FFFFFF" />
+                            <input type="color" defaultValue="#FFFFFF" />
                         </div>
-                        <input type="date" value="2026-12-31" />
+                        <input type="date" defaultValue="2026-12-31" />
                         <div id="time-picker">
                             <div>
-                                <label for="start-time">Start time</label>
-                                <input type="time" id="start-time" value="00:00" />
+                                <label htmlFor="start-time">Start time</label>
+                                <input type="time" id="start-time" defaultValue="00:00" />
                             </div>
                             <div>
-                                <label for="end-time">End time</label>
-                            <input type="time" id="end-time" value="23:59" />
+                                <label htmlFor="end-time">End time</label>
+                            <input type="time" id="end-time" defaultValue="23:59" />
                             </div>
                         </div>
                         <input type="text" placeholder="Location" />
                         <textarea placeholder="Description"></textarea>
                         <div>
-                            <label for="availability">Availability:</label>
+                            <label htmlFor="availability">Availability:</label>
                             <select id="availability">
-                                <option selected>Busy</option>
+                                <option defaultValue>Busy</option>
                                 <option>Free</option>
                             </select>
                         </div>
                         <button>Add from Google Calendar API</button>
-                        <div><input type="submit" value="Add Event" /></div>
+                        <div><input type="submit" defaultValue="Add Event" /></div>
                     </form>
                 </div>
                 
-                <div id="add-task" class="basic-box">
+                <div id="add-task" className="basic-box">
                     <form>
                         <div id="task-name">
                             <input type="text" placeholder="Task name" />
-                            <input type="color" value="#FFFFFF" />
+                            <input type="color" defaultValue="#FFFFFF" />
                         </div>
                         <div id="time-picker">
                             <div>
-                                <label for="task-time">Time</label>
-                                <input type="time" id="task-time" value="00:00" />
+                                <label htmlFor="task-time">Time</label>
+                                <input type="time" id="task-time" defaultValue="00:00" />
                             </div>
                         </div>
-                        <input type="date" value="2026-12-31" />
-                        <div><input type="submit" value="Add Task" /></div>
+                        <input type="date" defaultValue="2026-12-31" />
+                        <div><input type="submit" defaultValue="Add Task" /></div>
                     </form>
                 </div>
             </div>

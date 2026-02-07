@@ -6,15 +6,15 @@ export function Calendar() {
             <div id="calendar-main">
                 <div id="calendar-title">
                     <h1>Calendar</h1>
-                    <button class="basic-box">Tasks</button>
+                    <button className="basic-box">Tasks</button>
                 </div>
                 <div id="event-block">
-                    <div class="event-content basic-box">
-                        <div class="event-time">
+                    <div className="event-content basic-box">
+                        <div className="event-time">
                             <div>8:00</div>
                             <div>9:00</div>
                         </div>
-                        <div class="event-info">
+                        <div className="event-info">
                             <div id="info-detailed">
                                 <div id="event-name">Name</div>
                                 <div id="date">Today</div>
@@ -25,8 +25,8 @@ export function Calendar() {
                     </div>
                 </div>
             </div>
-            <div id="taskbar" class="basic-box">
-                <p style="margin:0;">Tasks</p>
+            <div id="taskbar" className="basic-box">
+                <p>Tasks</p>
                 <ul>
                     <li>Task 1</li>
                     <li>Task 2</li>

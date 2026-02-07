@@ -5,13 +5,13 @@ export function Compare() {
         <main>
             <h1>Compare Calendars</h1>
 
-            <div class="compare-calendars">
-                <div class="event-content basic-box">
-                    <div class="event-time">
+            <div className="compare-calendars">
+                <div className="event-content basic-box">
+                    <div className="event-time">
                         <div>8:00</div>
                         <div>9:00</div>
                     </div>
-                    <div class="event-info">
+                    <div className="event-info">
                         <div id="info-detailed">
                             <div id="event-name">Name</div>
                             <div id="date">Today</div>
@@ -21,12 +21,12 @@ export function Compare() {
                     </div>
                 </div>
 
-                <div class="event-content basic-box">
-                    <div class="event-time">
+                <div className="event-content basic-box">
+                    <div className="event-time">
                         <div>8:00</div>
                         <div>9:00</div>
                     </div>
-                    <div class="event-info">
+                    <div className="event-info">
                         <div id="info-detailed">
                             <div id="event-name">Name</div>
                             <div id="date">Today</div>
