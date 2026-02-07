@@ -85,11 +85,11 @@ footer {
 }
 
 nav ul {
-    margin:0px;
     display:flex;
+    margin-bottom: 0;
     border-bottom: 1px solid black;
     list-style: none;
-    padding: 10px 10px;
+    padding: 10px 20px;
     align-items: center;
 }
 
@@ -98,19 +98,25 @@ nav li:not(:last-child) {
 }
 
 #nav-logo {
+    flex: 0 0 90px;
     text-align: center;
     padding: 6px 10px;
+    margin: 0;
 }
 
-nav ul li {
-    display:inline-block;
-    border:none;
-    text-align: center;
+nav .button {
     cursor: pointer;
-    padding: 1px 8px;
+    padding: 0px 8px;
     text-decoration: none;
-    height: 100%;
-    width: 65px;
+}
+
+nav li {
+    flex: 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: center;
+    height: 48px;
 }
 
 .button:hover {

@@ -29,7 +29,7 @@
 }
 
 #add-task {
-    height: 150px;
+    height: 160px;
 }
 
 #event-name, #task-name {
@@ -67,6 +67,7 @@
 
 .compare-calendars div {
     flex: 1;
+    max-width: 400px;
 }
 
 #calendar-page {
