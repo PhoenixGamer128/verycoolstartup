@@ -1,0 +1,41 @@
+#add-page {
+    display:flex;
+    gap: 5px;
+}
+
+#add-event, #add-task {
+    max-width: 200px;
+    overflow: hidden;
+}
+
+#add-task {
+    height: 160px;
+}
+
+#event-name, #task-name {
+    display:flex;
+}
+
+#event-name input[type="text"], #task-name input[type="text"] {
+    flex: 1; 
+    margin-right: 5px;
+}
+
+#event-name input[type="color"], #task-name input[type="color"] {
+    flex: 0 0 20px;
+    padding: 0;
+    border: 0;
+    height: auto;
+}
+
+#time-picker {
+    display: flex;
+}
+
+#time-picker div:not(:last-child) {
+    margin-right:5px;
+}
+
+#availability {
+    width: 1;
+}

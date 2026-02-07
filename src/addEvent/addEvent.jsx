@@ -1,4 +1,5 @@
 import React from "react";
+import './addEvent.css';
 
 export function AddEvent() {
     return (
