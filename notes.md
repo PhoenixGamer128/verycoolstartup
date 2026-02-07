@@ -36,7 +36,7 @@ I added several ways for overflow and wrapping to occur to make it pleasing to t
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Learning to port my CSS deliverable to React was a bit of work, especially at the beginning when I was figuring out what keywords I was using. I also noticed that pure HTML has more leniency than JSX, I forgot to end all my inputs with '/>', something that HTML ignored, so I'm glad I figured it out in the end! I had a bit of trouble because of conflicting CSS, but it was because of some class naming conventions I changed to fit with React.
 
 ## React Part 2: Reactivity
 
