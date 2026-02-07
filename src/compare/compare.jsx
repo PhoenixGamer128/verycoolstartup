@@ -1,4 +1,5 @@
 import React from "react";
+import './compare.css';
 
 export function Compare() {
     return (
