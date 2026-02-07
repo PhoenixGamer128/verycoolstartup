@@ -1,22 +1,5 @@
 /* Page-specific styling */
 
-#front-page {
-    display: flex;
-    padding-top: 50px;
-    justify-content: center;
-}
-
-#sign-in {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 400px;
-}
-
-#front-image {
-    padding-bottom: 60px;
-}
 
 #add-page {
     display:flex;
