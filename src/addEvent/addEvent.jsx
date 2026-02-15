@@ -4,11 +4,19 @@ import { submitEvent } from "../services";
 
 export function AddEvent(props) {
 
+    const duration = 30; // minutes
+    
+    const dateInfo = new Date();
+    const currentDate = dateInfo.toISOString().split('T')[0];
+    const currentTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
+    dateInfo.setMinutes(dateInfo.getMinutes() + duration);
+    const laterTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
+
     const [eventName, setEventName] = React.useState("");
     const [eventColor, setEventColor] = React.useState("#FFFFFF");
-    const [eventDate, setEventDate] = React.useState("2026-12-31");
-    const [startTime, setStartTime] = React.useState("00:00");
-    const [endTime, setEndTime] = React.useState("23:59");
+    const [eventDate, setEventDate] = React.useState(currentDate);
+    const [startTime, setStartTime] = React.useState(currentTime);
+    const [endTime, setEndTime] = React.useState(laterTime);
     const [location, setLocation] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [availability, setAvailability] = React.useState("Busy");
