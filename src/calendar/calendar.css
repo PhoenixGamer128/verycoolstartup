@@ -4,6 +4,7 @@
 #calendar-page {
     display:flex;
     justify-content: space-between;
+    margin-bottom: 80px;
 }
 
 #calendar-main {
@@ -23,7 +24,9 @@
 }
 
 #event-block {
-    display:flex;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 15px;
 }
 
 .event-content {
@@ -33,11 +36,13 @@
     gap: 15px;
     padding: 5px;
     height: 64px;
+    height: 128px;
     min-width: 0;
 }
 
 #taskbar {
     flex: 0 0 200px;
+    height: fit-content;
 }
 
 .event-info {

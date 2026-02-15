@@ -26,7 +26,10 @@ main {
     flex: 1;
 }
 
-
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
 
 .basic-box {
     background-color: var(--baseColor);
