@@ -5,9 +5,12 @@ import { submitEvent } from "../services";
 export function AddEvent(props) {
 
     const duration = 30; // minutes
-    
+
     const dateInfo = new Date();
-    const currentDate = dateInfo.toISOString().split('T')[0];
+    const currentYear = dateInfo.getFullYear();
+    const currentMonth = String(dateInfo.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const currentDay = String(dateInfo.getDate()).padStart(2, '0'); // Pad single digit days with a leading zero
+    const currentDate = `${currentYear}-${currentMonth}-${currentDay}`; // Format as YYYY-MM-DD for date input value
     const currentTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
     dateInfo.setMinutes(dateInfo.getMinutes() + duration);
     const laterTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
