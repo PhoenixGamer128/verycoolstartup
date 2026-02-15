@@ -4,8 +4,14 @@
 }
 
 #add-event, #add-task {
-    max-width: 200px;
+    max-width: 250px;
     overflow: hidden;
+}
+
+#add-event textarea {
+    resize: none;
+    height: 60px;
+    width: 100%;
 }
 
 #add-task {
