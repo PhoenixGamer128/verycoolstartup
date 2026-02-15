@@ -11,6 +11,8 @@ import { Tasks } from './tasks/tasks';
 import { About } from './about/about';
 
 export default function App() {
+  const user1 = "Teskin Barrow";
+  const user2 = "Nia Serra";
   return (
     <BrowserRouter>
       <div className="app">
@@ -29,8 +31,8 @@ export default function App() {
 
         <Routes>
           <Route path='/' element={<Login />} exact />
-          <Route path='/calendar' element={<Calendar />} />
-          <Route path='/addEvent' element={<AddEvent />} />
+          <Route path='/calendar' element={<Calendar username={user1} />} />
+          <Route path='/addEvent' element={<AddEvent username={user1} />} />
           <Route path='/compare' element={<Compare />} />
           <Route path='/tasks' element={<Tasks />} />
           <Route path='/about' element={<About />} />
