@@ -24,9 +24,9 @@
 }
 
 #event-block {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 15px;
+    position: relative;
+    height: 1200px;
+    width: 400px;
 }
 
 .event-content {
@@ -36,6 +36,7 @@
     gap: 15px;
     padding: 5px;
     min-width: 0;
+    border-radius: 8px;
 }
 
 #taskbar {

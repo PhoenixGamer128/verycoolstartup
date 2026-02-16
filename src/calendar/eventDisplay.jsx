@@ -2,14 +2,14 @@ import React from "react";
 import { GetEvents } from "../services";
 
 function eventStyle(event) {
+    const startTimeMins = parseInt(event.startTime.split(':')[0]) * 60 + parseInt(event.startTime.split(':')[1]);
     return {
         position: "absolute",
-        width: "50%",
+        width: "100%",
         backgroundColor: event.eventColor,
-        // Recalculate height and top position based on start and end times (assuming times are in "HH:MM" format)
-        height: (event.endTime-event.startTime)/1000/60 + "px", // Convert time difference from milliseconds to minutes and set as height
-        top: event.startTime/1000/60 + "px" // Convert start time from milliseconds to minutes and set as top position
-     };
+        height: `${event.duration/60/24*100}%`, // Convert duration from minutes to fraction of a day, then to percentage
+        top: `${startTimeMins/60/24*100}%`, // Convert start time from minutes to fraction of a day, then to percentage
+    }
 }
 
 export function RenderEvents(props) {
