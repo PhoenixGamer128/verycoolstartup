@@ -2,24 +2,45 @@ import React from "react";
 import './addEvent.css';
 import { submitEvent } from "../services";
 
+function calculateDate(dateObject) {
+    // Formatted like this for July 1st, 2024: 2024-06-01T12:00:00.000Z
+    // Year, month, and day is separated because the month is zero-indexed
+    const year = dateObject.getFullYear();
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed, padding
+    const day = String(dateObject.getDate()).padStart(2, '0'); // Padding
+    return `${year}-${month}-${day}`; // Format as YYYY-MM-DD for date input value
+}
+
+function addTime(time, minutes) {
+    const [hours, mins] = time.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(mins + minutes);
+    return date.toTimeString().split(' ')[0].slice(0, 5);
+}
+
+function calculateDuration(startTime, endTime) {
+    const [startHours, startMins] = startTime.split(':').map(Number);
+    const [endHours, endMins] = endTime.split(':').map(Number);
+    const startTotalMins = startHours * 60 + startMins;
+    const endTotalMins = endHours * 60 + endMins;
+    return endTotalMins - startTotalMins;
+}
+
 export function AddEvent(props) {
 
     const duration = 30; // minutes
 
-    const dateInfo = new Date();
-    const currentYear = dateInfo.getFullYear();
-    const currentMonth = String(dateInfo.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-    const currentDay = String(dateInfo.getDate()).padStart(2, '0'); // Pad single digit days with a leading zero
-    const currentDate = `${currentYear}-${currentMonth}-${currentDay}`; // Format as YYYY-MM-DD for date input value
-    const currentTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
-    dateInfo.setMinutes(dateInfo.getMinutes() + duration);
-    const laterTime = dateInfo.toTimeString().split(' ')[0].slice(0, 5);
+    const currentDateInfo = new Date(); 
+    const currentDate = calculateDate(currentDateInfo);
+    const currentTime = currentDateInfo.toTimeString().split(' ')[0].slice(0, 5); // "12:00:00" -> "12:00"
+    
 
     const [eventName, setEventName] = React.useState("");
     const [eventColor, setEventColor] = React.useState("#FFFFFF");
     const [eventDate, setEventDate] = React.useState(currentDate);
     const [startTime, setStartTime] = React.useState(currentTime);
-    const [endTime, setEndTime] = React.useState(laterTime);
+    const [endTime, setEndTime] = React.useState(addTime(currentTime, duration));
     const [location, setLocation] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [availability, setAvailability] = React.useState("Busy");
@@ -32,6 +53,7 @@ export function AddEvent(props) {
                 eventDate,
                 startTime,
                 endTime,
+                duration: calculateDuration(startTime, endTime),
                 location,
                 description,
                 availability
