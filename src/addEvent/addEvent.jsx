@@ -95,7 +95,7 @@ export function AddEvent(props) {
                         <div><input type="submit" defaultValue="Add Event" /></div>
                     </form>
                 </div>
-                
+                {/*}
                 <div id="add-task" className="basic-box">
                     <form>
                         <div id="task-name">
@@ -112,6 +112,7 @@ export function AddEvent(props) {
                         <div><input type="submit" defaultValue="Add Task" /></div>
                     </form>
                 </div>
+                */}
             </div>
         </main>
     );

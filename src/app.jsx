@@ -23,7 +23,7 @@ export default function App() {
             <li><NavLink className="button" to="calendar">Calendar page</NavLink></li>
             <li><NavLink className="button" to="addEvent">Add event</NavLink></li>
             <li><NavLink className="button" to="compare">Compare events</NavLink></li>
-            <li><NavLink className="button" to="tasks">Tasks</NavLink></li>
+            {/*<li><NavLink className="button" to="tasks">Tasks</NavLink></li>*/}
             <li><NavLink className="button" to="about">About</NavLink></li>
             <li><NavLink className="button" to="https://simon.pathforeternity.click" target="_blank">Simon</NavLink></li>
           </ul>
@@ -34,7 +34,7 @@ export default function App() {
           <Route path='/calendar' element={<Calendar username={user1} />} />
           <Route path='/addEvent' element={<AddEvent username={user1} />} />
           <Route path='/compare' element={<Compare username={user1} />} />
-          <Route path='/tasks' element={<Tasks />} />
+          {/*<Route path='/tasks' element={<Tasks />} />*/}
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
