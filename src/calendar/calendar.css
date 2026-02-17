@@ -23,7 +23,7 @@
     display: none;
 }
 
-#event-block {
+.event-window {
     position: relative;
     height: 1200px;
     width: 400px;

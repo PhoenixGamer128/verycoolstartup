@@ -33,7 +33,7 @@ export default function App() {
           <Route path='/' element={<Login />} exact />
           <Route path='/calendar' element={<Calendar username={user1} />} />
           <Route path='/addEvent' element={<AddEvent username={user1} />} />
-          <Route path='/compare' element={<Compare />} />
+          <Route path='/compare' element={<Compare username={user1} />} />
           <Route path='/tasks' element={<Tasks />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />

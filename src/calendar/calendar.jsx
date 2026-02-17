@@ -1,6 +1,6 @@
 import React from "react";
 import './calendar.css';
-import { RenderEvents } from "./eventDisplay";
+import { RenderEvents } from "../eventDisplay";
 
 export function Calendar(props) {
 
@@ -13,7 +13,7 @@ export function Calendar(props) {
                     <h1>Calendar</h1>
                     <button className="basic-box">Tasks</button>
                 </div>
-                <div id="event-block">
+                <div class="event-window">
                     <RenderEvents username={props.username} />
                 </div>
             </div>

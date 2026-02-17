@@ -1,5 +1,5 @@
 import React from "react";
-import { GetEvents } from "../services";
+import { GetEvents } from "./services";
 
 function eventStyle(event) {
     const startTimeMins = parseInt(event.startTime.split(':')[0]) * 60 + parseInt(event.startTime.split(':')[1]);
@@ -15,7 +15,7 @@ function eventStyle(event) {
 export function RenderEvents(props) {
     const events = GetEvents(props.username);
     return (
-        <div id="event-block">
+        <div id="event-card">
             {events.map((event, index) => (
                 <div key={index} style={eventStyle(event)} className="event-content basic-box">
                     <div className="event-time">
