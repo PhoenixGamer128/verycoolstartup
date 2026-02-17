@@ -7,16 +7,17 @@ export function Calendar(props) {
 
 
     return (
-        <main id="calendar-page">
+        <main>
             <div id="calendar-main">
                 <div id="calendar-title">
                     <h1>Calendar</h1>
-                    <button className="basic-box">Tasks</button>
+                    {/*<button className="basic-box">Tasks</button>*/}
                 </div>
-                <div class="event-window">
+                <div className="event-window">
                     <RenderEvents username={props.username} />
                 </div>
             </div>
+            {/*
             <div id="taskbar" className="basic-box">
                 <p>Tasks</p>
                 <ul>
@@ -25,6 +26,7 @@ export function Calendar(props) {
                     <li>Task 3</li>
                 </ul>
             </div>
+            */}
         </main>
     )
 }
