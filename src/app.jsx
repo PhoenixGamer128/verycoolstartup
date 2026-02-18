@@ -13,6 +13,8 @@ import { About } from './about/about';
 export default function App() {
   const user1 = "Teskin Barrow";
   const user2 = "Nia Serra";
+  const [user, setUser] = React.useState("");
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -30,10 +32,10 @@ export default function App() {
         </nav>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
-          <Route path='/calendar' element={<Calendar username={user1} />} />
-          <Route path='/addEvent' element={<AddEvent username={user1} />} />
-          <Route path='/compare' element={<Compare username={user1} />} />
+          <Route path='/' element={<Login setUser={setUser} />} exact />
+          <Route path='/calendar' element={<Calendar username={user} />} />
+          <Route path='/addEvent' element={<AddEvent username={user} />} />
+          <Route path='/compare' element={<Compare username={user} />} />
           {/*<Route path='/tasks' element={<Tasks />} />*/}
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
