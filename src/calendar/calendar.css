@@ -20,11 +20,16 @@
 }
 
 .event-window {
+    display:flex;
+    width: 800px;
+}
+
+.event-day {
     position: relative;
+    flex: 1;
     height: 1200px;
     margin-top: 16px;
     margin-bottom: 50px;
-    max-width: 800px;
     border: 1px solid lightgray;
 }
 

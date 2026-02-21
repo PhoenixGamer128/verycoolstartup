@@ -62,13 +62,15 @@ export function RenderEvents(props) {
         return <div className="no-events" style={{ position: "absolute", left: `${columnID * 100 / numColumns}%` }}>No events to display.</div>;
     }
     return (
-        <div id="event-card">
-            {events.map((event, index) => (
-                <div key={index} style={eventStyle(event, columnID, numColumns)} className="calendar-event clickable" onClick={() => { setPopupOpen(true); setPopupEvent(event); }}>
-                    <div id="event-name">{event.eventName}</div>
-                </div>
-            ))}
-            {popupOpen && popupEvent && eventPopUp(props, popupEvent, setPopupOpen, refreshEvents)}
+        <div className="event-day">
+            <div id="event-card">
+                {events.filter(event => event.eventDate === props.renderDate).map((event, index) => (
+                    <div key={index} style={eventStyle(event, columnID, numColumns)} className="calendar-event clickable" onClick={() => { setPopupOpen(true); setPopupEvent(event); }}>
+                        <div id="event-name">{event.eventName}</div>
+                    </div>
+                ))}
+                {popupOpen && popupEvent && eventPopUp(props, popupEvent, setPopupOpen, refreshEvents)}
+            </div>
         </div>
     )
 }
