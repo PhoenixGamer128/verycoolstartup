@@ -5,7 +5,7 @@ import { LoginUser, CreateUser } from '../services';
 export function Login({ setUser }) {
     function Login(e) {
         e.preventDefault();
-        LoginUser(username, password);
+        LoginUser(username, password) && setAuthenticated(true);
         setUser(username);
     }
 
@@ -16,6 +16,7 @@ export function Login({ setUser }) {
 
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [authenticated, setAuthenticated] = React.useState(false);
 
     return (
         <main id="front-page">
@@ -29,6 +30,7 @@ export function Login({ setUser }) {
                         <input id="sign-up" type="submit" value="Sign up" />
                     </div>
                 </form>
+                <p>{authenticated ? `Welcome, ${username}!` : ""}</p>
             </div>
         </main>
     );

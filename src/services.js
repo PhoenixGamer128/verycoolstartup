@@ -1,13 +1,18 @@
 export function submitEvent(username, eventData) {
-    const userEvents = JSON.parse(localStorage.getItem(username) || '[]');
-    userEvents.push(eventData);
-    localStorage.setItem(username, JSON.stringify(userEvents));
-    console.log(`User: ${username}`);
-    console.log(eventData);
+    const user = JSON.parse(localStorage.getItem(username));
+    if (user) {
+        user.events.push(eventData);
+        localStorage.setItem(username, JSON.stringify(user));
+        console.log(`User: ${username}`);
+        console.log(eventData);
+    } else {
+        console.error(`User ${username} not found.`);
+    }
 }
 
 export function GetEvents(username) {
-    const userEvents = JSON.parse(localStorage.getItem(username) || '[]');
+    const user = JSON.parse(localStorage.getItem(username));
+    const userEvents = user ? user.events : [];
     return userEvents;
 }
 
