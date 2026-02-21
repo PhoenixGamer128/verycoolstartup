@@ -59,6 +59,15 @@ export function AddEvent(props) {
                 availability
             };
             submitEvent(props.username, eventData);
+            
+            setEventName("");
+            setEventColor("#FFFFFF");
+            setEventDate(currentDate);
+            setStartTime(currentTime);
+            setEndTime(addTime(currentTime, duration));
+            setLocation("");
+            setDescription("");
+            setAvailability("Busy");
         }
 
     return (
