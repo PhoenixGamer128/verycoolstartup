@@ -38,6 +38,14 @@
     border-radius: 8px;
 }
 
+.calendar-event {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0px 5px;
+    overflow: hidden;
+    align-items: center;
+}
+
 #taskbar {
     flex: 0 0 200px;
     height: fit-content;

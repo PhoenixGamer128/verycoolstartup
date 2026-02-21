@@ -1,10 +1,15 @@
 export function submitEvent(username, eventData) {
     const user = JSON.parse(localStorage.getItem(username));
     if (user) {
-        user.events.push(eventData);
+        // Generate unique ID using timestamp + random number
+        const eventWithId = {
+            id: Date.now() + Math.random().toString(36).slice(2, 9),
+            ...eventData
+        };
+        user.events.push(eventWithId);
         localStorage.setItem(username, JSON.stringify(user));
         console.log(`User: ${username}`);
-        console.log(eventData);
+        console.log(eventWithId);
     } else {
         console.error(`User ${username} not found.`);
     }
@@ -39,8 +44,20 @@ function validateUser(username, password) {
 
     if (isValidPassword(password)) {
         return true;
+       }
+}
+
+export function DeleteEvent(username, eventId) {
+    const user = JSON.parse(localStorage.getItem(username));
+    if (user) {
+        user.events = user.events.filter(event => event.id !== eventId);
+        localStorage.setItem(username, JSON.stringify(user));
+        console.log(`Deleted event with ID: ${eventId}`);
+    } else {
+        console.error(`User ${username} not found.`);
     }
 }
+
 
 export function CreateUser(username, password) {
     if (validateUser(username, password)) {
