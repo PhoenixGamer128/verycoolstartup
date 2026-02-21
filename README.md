@@ -96,8 +96,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I added login reactivity, with alerts to show errors to the user. Reactive calendar page with several days (starting from the current day), clickable events (must add an event first) that you can either close or delete selected event. Added a message to the user upon submitting an event. (no error handling for blank events unfortunately :\ ) A compare page to compare with any known users (this is a security problem, but that's a problem for future me) along with an alert to tell you you are not logged in.
+- [x] **Hooks** - I may have used too many... I completed this part of the deliverable.
 
 ## 🚀 Service deliverable
 
