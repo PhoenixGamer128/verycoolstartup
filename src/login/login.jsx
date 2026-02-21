@@ -11,12 +11,13 @@ export function Login({ setUser }) {
 
     function Register(e) {
         e.preventDefault();
-        CreateUser(username, password);
+        CreateUser(username, password) && setUserCreated(true);
     }
 
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [authenticated, setAuthenticated] = React.useState(false);
+    const [userCreated, setUserCreated] = React.useState(false);
 
     return (
         <main id="front-page">
@@ -31,6 +32,7 @@ export function Login({ setUser }) {
                     </div>
                 </form>
                 <p>{authenticated ? `Welcome, ${username}!` : ""}</p>
+                <p>{userCreated ? `Account ${username} created successfully!` : ""}</p>
             </div>
         </main>
     );

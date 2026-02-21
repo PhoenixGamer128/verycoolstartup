@@ -10,8 +10,10 @@ export function submitEvent(username, eventData) {
         localStorage.setItem(username, JSON.stringify(user));
         console.log(`User: ${username}`);
         console.log(eventWithId);
+        return true;
     } else {
         console.error(`User ${username} not found.`);
+        return false;
     }
 }
 
