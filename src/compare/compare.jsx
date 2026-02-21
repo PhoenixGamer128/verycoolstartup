@@ -5,6 +5,12 @@ export function Compare(props) {
     const [user2, setUser2] = React.useState("");
     const [user2input, setUser2Input] = React.useState("");
 
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const currentDate = `${year}-${month}-${day}`;
+
     function handleSubmit(e) {
         e.preventDefault();
         setUser2(user2input);
@@ -22,8 +28,8 @@ export function Compare(props) {
                 <button type="submit">Compare</button>
             </form>
             <div className="event-window">
-                <RenderEvents username={props.username} numColumns={user2 ? 2 : 1} columnID={0} />
-                {user2 && <RenderEvents username={user2} numColumns={2} columnID={1} />}
+                <RenderEvents username={props.username} numColumns={user2 ? 2 : 1} columnID={0} renderDate={currentDate} />
+                {user2 && <RenderEvents username={user2} numColumns={2} columnID={1} renderDate={currentDate} />}
             </div>
         </main>
     )

@@ -45,6 +45,9 @@ export function AddEvent(props) {
     const [description, setDescription] = React.useState("");
     const [availability, setAvailability] = React.useState("Busy");
 
+    const [showSuccess, setShowSuccess] = React.useState(false);
+    const [fadeOut, setFadeOut] = React.useState(false);
+
     function handleSubmit(e) {
             e.preventDefault();
             const eventData = {
@@ -58,16 +61,28 @@ export function AddEvent(props) {
                 description,
                 availability
             };
-            submitEvent(props.username, eventData);
-            
-            setEventName("");
-            setEventColor("#FFFFFF");
-            setEventDate(currentDate);
-            setStartTime(currentTime);
-            setEndTime(addTime(currentTime, duration));
-            setLocation("");
-            setDescription("");
-            setAvailability("Busy");
+            if (submitEvent(props.username, eventData)) {
+                setEventName("");
+                setEventColor("#FFFFFF");
+                setEventDate(currentDate);
+                setStartTime(currentTime);
+                setEndTime(addTime(currentTime, duration));
+                setLocation("");
+                setDescription("");
+                setAvailability("Busy");
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setFadeOut(true);
+                }, 2000);
+                setTimeout(() => {
+                    setShowSuccess(false);
+                    setFadeOut(false);
+                }, 2500);
+            } else {
+                alert("Please login to add events.");
+                //alert("Failed to add event. Please try again.");
+            }
         }
 
     return (
@@ -104,6 +119,7 @@ export function AddEvent(props) {
                         <div><input type="submit" defaultValue="Add Event" /></div>
                     </form>
                 </div>
+                {showSuccess && <p className={fadeOut ? "fade-out" : ""}>Event added successfully!</p>}
                 {/*}
                 <div id="add-task" className="basic-box">
                     <form>
