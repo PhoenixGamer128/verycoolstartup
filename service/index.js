@@ -24,7 +24,77 @@ app.use(cookieParser());
 var apiRouter = express.Router();
 app.use('/api', apiRouter);
 
+// User registration endpoint
+apiRouter.post('/auth/create', async (req, res) => {
+    if (await findUser('username', req.body.username)) {
+        res.status(409).send({ message: 'Username already exists' });
+    } else {
+        const user = await createUser(req.body.username, req.body.password);
 
+        setAuthCookie(res, user.id);
+        res.send({ username: user.username });
+    }
+});
+
+// User login endpoint
+apiRouter.post('/auth/login', async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    if (user && await bcrypt.compare(req.body.password, user.passwordHash)) {
+        user.authToken = uuid.v4();
+        setAuthCookie(res, user.authToken);
+        res.send({ username: user.username });
+        return;
+    }
+    res.status(401).send({ message: 'Invalid username or password' });
+});
+
+// Delete user endpoint
+apiRouter.delete('/auth/logout', async (req, res) => {
+    const user = await findUser('authToken', req.cookies[authCookieName]);
+    if (user) {
+        delete user.authToken;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+});
+
+// Middleware to authenticate requests
+const verifyAuth = async (req, res, next) => {
+    const user = await findUser('authToken', req.cookies[authCookieName]);
+    if (user) {
+        next();
+    } else {
+        res.status(401).send({ message: 'Unauthorized' });
+    }
+};
+
+
+
+// Global error handling middleware
+app.use(function (err, req, res, next) {
+    res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
+// Helper functions
+async function createUser(username, password) {
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = {
+        username: username,
+        passwordHash: passwordHash,
+        id: uuid.v4(),
+    };
+    users.push(user);
+    return user;
+}
+
+async function findUser(key, value) {
+    if (!value) return null;
+    return users.find(user => user[key] === value);
+}
 
 
 function setAuthCookie(res, authToken) {
