@@ -37,7 +37,7 @@ export default function App() {
         </nav>
 
         <Routes>
-          <Route path='/' element={<Login setUser={setUser} userName={username} authState={authState} onAuthChange={(username, authState) => { setUsername(username); setAuthState(authState); }} />} exact />
+          <Route path='/' element={<Login /*setUser={setUser}*/ username={username} authState={authState} onAuthChange={(username, authState) => { setUsername(username); setAuthState(authState); }} />} exact />
           <Route path='/calendar' element={<Calendar username={user} />} />
           <Route path='/addEvent' element={<AddEvent username={user} />} />
           <Route path='/compare' element={<Compare username={user} />} />
