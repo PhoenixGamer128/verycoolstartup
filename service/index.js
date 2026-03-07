@@ -68,7 +68,31 @@ const verifyAuth = async (req, res, next) => {
     }
 };
 
+// Create event endpoint
+apiRouter.post('/events', verifyAuth, async (req, res) => {
+    const user = await findUser('authToken', req.cookies[authCookieName]);
+    events.push({
+        id: uuid.v4(),
+        userId: user.id,
+        eventName: req.body.eventName,
+        eventColor: req.body.eventColor,
+        eventDate: req.body.eventDate,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        duration: req.body.duration,
+        location: req.body.location,
+        description: req.body.description,
+        availability: req.body.availability,
+    });
+    res.status(201).end();
+});
 
+// Get events endpoint
+apiRouter.get('/events', verifyAuth, async (req, res) => {
+    const user = await findUser('authToken', req.cookies[authCookieName]);
+    const userEvents = events.filter(event => event.userId === user.id);
+    res.send(userEvents);
+});
 
 // Global error handling middleware
 app.use(function (err, req, res, next) {
