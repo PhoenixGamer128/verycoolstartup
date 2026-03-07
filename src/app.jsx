@@ -9,11 +9,16 @@ import { AddEvent } from './addEvent/addEvent';
 import { Compare } from './compare/compare';
 import { Tasks } from './tasks/tasks';
 import { About } from './about/about';
+import { AuthState } from './login/authState';
 
 export default function App() {
   const user1 = "Teskin Barrow";
   const user2 = "Nia Serra";
   const [user, setUser] = React.useState("");
+
+  const [username, setUsername] = React.useState(localStorage.getItem('username') || '');
+  const currentAuthState = username ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
 
   return (
     <BrowserRouter>
@@ -32,7 +37,7 @@ export default function App() {
         </nav>
 
         <Routes>
-          <Route path='/' element={<Login setUser={setUser} />} exact />
+          <Route path='/' element={<Login setUser={setUser} userName={username} authState={authState} onAuthChange={(username, authState) => { setUsername(username); setAuthState(authState); }} />} exact />
           <Route path='/calendar' element={<Calendar username={user} />} />
           <Route path='/addEvent' element={<AddEvent username={user} />} />
           <Route path='/compare' element={<Compare username={user} />} />
