@@ -52,7 +52,11 @@ export function RenderEvents(props) {
     };
 
     React.useEffect(() => {
-        refreshEvents();
+        fetch('/api/events')
+            .then(response => response.json())
+            .then(data => {
+                setEvents(data);
+            });
     }, []);
 
     if (!events || events.length === 0) {
