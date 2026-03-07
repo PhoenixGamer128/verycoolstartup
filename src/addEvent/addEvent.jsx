@@ -27,6 +27,14 @@ function calculateDuration(startTime, endTime) {
     return endTotalMins - startTotalMins;
 }
 
+async function pushEvent(eventData) {
+    await fetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(eventData)
+    });
+}
+
 export function AddEvent(props) {
 
     const duration = 30; // minutes
@@ -61,28 +69,29 @@ export function AddEvent(props) {
                 description,
                 availability
             };
-            if (submitEvent(props.username, eventData)) {
-                setEventName("");
-                setEventColor("#FFFFFF");
-                setEventDate(currentDate);
-                setStartTime(currentTime);
-                setEndTime(addTime(currentTime, duration));
-                setLocation("");
-                setDescription("");
-                setAvailability("Busy");
+            pushEvent(eventData);
+            // if (true) { // Change to check if event was successfully added
+            //     setEventName("");
+            //     setEventColor("#FFFFFF");
+            //     setEventDate(currentDate);
+            //     setStartTime(currentTime);
+            //     setEndTime(addTime(currentTime, duration));
+            //     setLocation("");
+            //     setDescription("");
+            //     setAvailability("Busy");
 
-                setShowSuccess(true);
-                setTimeout(() => {
-                    setFadeOut(true);
-                }, 2000);
-                setTimeout(() => {
-                    setShowSuccess(false);
-                    setFadeOut(false);
-                }, 2500);
-            } else {
-                alert("Please login to add events.");
-                //alert("Failed to add event. Please try again.");
-            }
+            //     setShowSuccess(true);
+            //     setTimeout(() => {
+            //         setFadeOut(true);
+            //     }, 2000);
+            //     setTimeout(() => {
+            //         setShowSuccess(false);
+            //         setFadeOut(false);
+            //     }, 2500);
+            // } else {
+            //     alert("Please login to add events.");
+            //     //alert("Failed to add event. Please try again.");
+            // }
         }
 
     return (
