@@ -28,7 +28,7 @@ Have you ever had a stressful day because of all the things that you had to do, 
 
 | Main Page | Event Add Page | Add Other User's Schedule |
 | --- | --- | --- |
-|![Design image 1](csDesign1.png) | ![Design image 2](csDesign2.png) | ![Design image 3](csDesign3.png)
+|![Design image 1](public/csDesign1.png) | ![Design image 2](public/csDesign2.png) | ![Design image 3](public/csDesign3.png)
 
 The design will have a main page with the calendar with buttons changing the page (or as an overlay) for specific actions. Events are color-coded, marked by shapes, to show what type of event it is. The design is to be simple to allow users not be overwhelmed by lots of information
 
