@@ -38,9 +38,9 @@ export default function App() {
 
         <Routes>
           <Route path='/' element={<Login /*setUser={setUser}*/ username={username} authState={authState} onAuthChange={(username, authState) => { setUsername(username); setAuthState(authState); }} />} exact />
-          <Route path='/calendar' element={<Calendar username={user} />} />
-          <Route path='/addEvent' element={<AddEvent username={user} />} />
-          <Route path='/compare' element={<Compare username={user} />} />
+          <Route path='/calendar' element={<Calendar username={username} />} />
+          <Route path='/addEvent' element={<AddEvent username={username} />} />
+          <Route path='/compare' element={<Compare username={username} />} />
           {/*<Route path='/tasks' element={<Tasks />} />*/}
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
