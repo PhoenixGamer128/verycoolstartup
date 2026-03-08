@@ -1,6 +1,6 @@
 import React from "react";
 import './addEvent.css';
-import { submitEvent } from "../services";
+//import { submitEvent } from "../services";
 
 function calculateDate(dateObject) {
     // Formatted like this for July 1st, 2024: 2024-06-01T12:00:00.000Z
@@ -52,6 +52,7 @@ export function AddEvent(props) {
     const [location, setLocation] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [availability, setAvailability] = React.useState("Busy");
+    const [publicEvent, setPublicEvent] = React.useState(false);
 
     const [showSuccess, setShowSuccess] = React.useState(false);
     const [fadeOut, setFadeOut] = React.useState(false);
@@ -67,7 +68,8 @@ export function AddEvent(props) {
                 duration: calculateDuration(startTime, endTime),
                 location,
                 description,
-                availability
+                availability,
+                publicEvent,
             };
             pushEvent(eventData);
             // if (true) { // Change to check if event was successfully added
@@ -79,7 +81,7 @@ export function AddEvent(props) {
             //     setLocation("");
             //     setDescription("");
             //     setAvailability("Busy");
-
+            //     setPublicEvent(false);
             //     setShowSuccess(true);
             //     setTimeout(() => {
             //         setFadeOut(true);
@@ -123,6 +125,10 @@ export function AddEvent(props) {
                                 <option value="Busy">Busy</option>
                                 <option value="Free">Free</option>
                             </select>
+                        </div>
+                        <div>
+                            <label htmlFor="public-event">Public Event:</label>
+                            <input type="checkbox" id="public-event" checked={publicEvent} onChange={(e) => setPublicEvent(e.target.checked)} />
                         </div>
                         <button type="button">Add from Google Calendar API</button>
                         <div><input type="submit" defaultValue="Add Event" /></div>

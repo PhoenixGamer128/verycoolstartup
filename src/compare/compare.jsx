@@ -13,11 +13,7 @@ export function Compare(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        setUser2(user2input);
-        if (JSON.parse(localStorage.getItem(user2input) || '[]').length === 0) {
-            alert(`User ${user2input} has no events to compare.`);
-            setUser2("");
-        }
+        setUser2(user2input.trim());
     }
     
     return (
@@ -29,7 +25,7 @@ export function Compare(props) {
             </form>
             <div className="event-window">
                 <RenderEvents username={props.username} numColumns={user2 ? 2 : 1} columnID={0} renderDate={currentDate} />
-                {user2 && <RenderEvents username={user2} numColumns={2} columnID={1} renderDate={currentDate} />}
+                {user2 && <RenderEvents username={user2} publicOnly={true} numColumns={2} columnID={1} renderDate={currentDate} />}
             </div>
         </main>
     )

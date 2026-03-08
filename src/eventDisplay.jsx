@@ -64,7 +64,7 @@ export function RenderEvents(props) {
     const [popupEvent, setPopupEvent] = React.useState(null);
 
     const refreshEvents = () => {
-        const eventsUrl = props.publicOnly
+        const eventsUrl = props.publicOnly // This is a bool to fetch current user or another user's public events
             ? `/api/events/public/${encodeURIComponent(props.username || '')}`
             : '/api/events';
 

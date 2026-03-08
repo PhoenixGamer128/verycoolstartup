@@ -83,6 +83,7 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
         location: req.body.location,
         description: req.body.description,
         availability: req.body.availability,
+        publicEvent: req.body.publicEvent,
     });
     res.status(201).end();
 });
@@ -92,6 +93,22 @@ apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
     const userEvents = events.filter(event => event.userId === user.id);
     res.send(userEvents);
+});
+
+// Get public events from a specific user endpoint
+apiRouter.get('/events/public/:username', verifyAuth, async (req, res) => {
+    const selectedUser = await findUser('username', req.params.username);
+    if (!selectedUser) {
+        res.status(404).send({ message: 'User not found' });
+        return;
+    }
+
+    const publicEvents = events.filter(
+        (event) =>
+            event.userId === selectedUser.id &&
+            (event.publicEvent === true || event.publicEvent === 'true')
+    );
+    res.send(publicEvents);
 });
 
 // Delete event endpoint
