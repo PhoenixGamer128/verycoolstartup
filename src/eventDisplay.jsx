@@ -1,5 +1,5 @@
 import React from "react";
-import { GetEvents, DeleteEvent } from "./services";
+//import { GetEvents, DeleteEvent } from "./services";
 
 function eventStyle(event) {
     const startTimeMins = parseInt(event.startTime.split(':')[0]) * 60 + parseInt(event.startTime.split(':')[1]);
@@ -13,11 +13,27 @@ function eventStyle(event) {
     }
 }
 
+async function DeleteEvent(username, eventId) {
+    const response = await fetch(`/api/events/${eventId}`, {
+        method: 'delete',
+        credentials: 'include',
+    });
+    if (response.status === 204) {
+        console.log(`Deleted event with ID: ${eventId}`);
+        return true;
+    } else {
+        alert('Failed to delete event');
+        return false;
+    }
+}
+
 function eventPopUp(props, event, setPopupOpen, refreshEvents) {
-    const handleDelete = () => {
-        DeleteEvent(props.username, event.id);
-        setPopupOpen(false);
-        refreshEvents(); // Refresh events after deletion
+    const handleDelete = async () => {
+        const success = await DeleteEvent(props.username, event.id);
+        if (success) {
+            setPopupOpen(false);
+            refreshEvents(); // Refresh events after deletion
+        }
     };
 
     return (
@@ -35,7 +51,7 @@ function eventPopUp(props, event, setPopupOpen, refreshEvents) {
                     </div>
                     <div id="event-desc">{event.description}</div>
                     <div id="location">@: {event.location}</div>
-                    <button className="button" onClick={handleDelete}>Delete Event</button>
+                    {!props.publicOnly && <button className="button" onClick={handleDelete}>Delete Event</button>}
                 </div>
             </div>
         </div>
@@ -48,16 +64,23 @@ export function RenderEvents(props) {
     const [popupEvent, setPopupEvent] = React.useState(null);
 
     const refreshEvents = () => {
-        setEvents(GetEvents(props.username) || []);
-    };
+        const eventsUrl = props.publicOnly
+            ? `/api/events/public/${encodeURIComponent(props.username || '')}`
+            : '/api/events';
 
-    React.useEffect(() => {
-        fetch('/api/events')
+        fetch(eventsUrl, {
+            credentials: 'include',
+        })
             .then(response => response.json())
             .then(data => {
                 setEvents(data);
-            });
-    }, []);
+            })
+            .catch(err => console.error('Failed to fetch events:', err));
+    };
+
+    React.useEffect(() => {
+        refreshEvents();
+    }, [props.username, props.publicOnly]);
 
     if (!events || events.length === 0) {
         console.log("No events to display.");
