@@ -1,3 +1,4 @@
+/*
 export function submitEvent(username, eventData) {
     const user = JSON.parse(localStorage.getItem(username));
     if (user) {
@@ -84,3 +85,4 @@ export function LoginUser(username, password) {
     }
     return true;
 }
+    */

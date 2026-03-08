@@ -94,6 +94,13 @@ apiRouter.get('/events', verifyAuth, async (req, res) => {
     res.send(userEvents);
 });
 
+// Delete event endpoint
+apiRouter.delete('/events/:id', verifyAuth, async (req, res) => {
+    const user = await findUser('authToken', req.cookies[authCookieName]);
+    events = events.filter(event => event.id !== req.params.id && event.userId === user.id);
+    res.status(204).end();
+});
+
 // Global error handling middleware
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });

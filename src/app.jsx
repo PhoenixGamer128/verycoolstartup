@@ -27,9 +27,13 @@ export default function App() {
           <ul>
             <li id="nav-logo">Path for Eternity</li>
             <li><NavLink className="button" to="">Home page</NavLink></li>
-            <li><NavLink className="button" to="calendar">Calendar page</NavLink></li>
-            <li><NavLink className="button" to="addEvent">Add event</NavLink></li>
-            <li><NavLink className="button" to="compare">Compare events</NavLink></li>
+            {authState === AuthState.Authenticated && (
+              <>
+                <li><NavLink className="button" to="calendar">Calendar page</NavLink></li>
+                <li><NavLink className="button" to="addEvent">Add event</NavLink></li>
+                <li><NavLink className="button" to="compare">Compare events</NavLink></li>
+              </>
+            )}
             {/*<li><NavLink className="button" to="tasks">Tasks</NavLink></li>*/}
             <li><NavLink className="button" to="about">About</NavLink></li>
             <li><NavLink className="button" to="https://simon.pathforeternity.click" target="_blank">Simon</NavLink></li>
