@@ -35,6 +35,31 @@ async function pushEvent(eventData) {
     });
 }
 
+async function getWeather() {
+    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.2338&longitude=-111.6585&hourly=temperature_2m,rain&current=temperature_2m,rain&timezone=America%2FDenver', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (!response.ok) {
+        return 'Unable to load current weather.';
+    }
+    const data = await response.json();
+    const temp = data?.current?.temperature_2m;
+    const tempUnit = data?.current_units?.temperature_2m ?? 'C';
+    const rain = data?.current?.rain;
+    const rainUnit = data?.current_units?.rain ?? 'mm';
+
+    if (temp === undefined || temp === null) {
+        return 'Current weather unavailable.';
+    }
+
+    if (rain === undefined || rain === null) {
+        return `Current weather: ${temp}${tempUnit}`;
+    }
+
+    return `Current weather: ${temp}${tempUnit}, rain: ${rain}${rainUnit}`;
+}
+
 export function AddEvent(props) {
 
     const duration = 30; // minutes
@@ -56,6 +81,13 @@ export function AddEvent(props) {
 
     const [showSuccess, setShowSuccess] = React.useState(false);
     const [fadeOut, setFadeOut] = React.useState(false);
+
+    const [quote, setQuote] = React.useState("");
+
+    React.useEffect(() => {
+        getWeather().then(setQuote);
+    }
+    , []);
 
     function handleSubmit(e) {
             e.preventDefault();
@@ -153,6 +185,10 @@ export function AddEvent(props) {
                     </form>
                 </div>
                 */}
+            </div>
+            <div id="quote">
+                <p>"The key is not to prioritize what's on your schedule, but to schedule your priorities." - Stephen Covey</p>
+                <p>{quote}</p>
             </div>
         </main>
     );
