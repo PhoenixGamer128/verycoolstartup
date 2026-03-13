@@ -27,12 +27,15 @@ function calculateDuration(startTime, endTime) {
     return endTotalMins - startTotalMins;
 }
 
-async function pushEvent(eventData) {
-    await fetch('/api/events', {
+async function pushEvent(eventData, clearForm) {
+    const response = await fetch('/api/events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(eventData)
     });
+    if (response.status === 201) {
+        clearForm();
+    }
 }
 
 async function getWeather() {
@@ -82,12 +85,32 @@ export function AddEvent(props) {
     const [showSuccess, setShowSuccess] = React.useState(false);
     const [fadeOut, setFadeOut] = React.useState(false);
 
-    const [quote, setQuote] = React.useState("");
+    const [weather, setWeather] = React.useState("");
 
     React.useEffect(() => {
-        getWeather().then(setQuote);
+        getWeather().then(setWeather);
     }
     , []);
+
+    function clearForm() {
+        setEventName("");
+        setEventColor("#FFFFFF");
+        setEventDate(currentDate);
+        setStartTime(currentTime);
+        setEndTime(addTime(currentTime, duration));
+        setLocation("");
+        setDescription("");
+        setAvailability("Busy");
+        setPublicEvent(false);
+        setShowSuccess(true);
+        setTimeout(() => {
+            setFadeOut(true);
+        }, 2000);
+        setTimeout(() => {
+            setShowSuccess(false);
+            setFadeOut(false);
+        }, 2500);
+    }
 
     function handleSubmit(e) {
             e.preventDefault();
@@ -103,70 +126,51 @@ export function AddEvent(props) {
                 availability,
                 publicEvent,
             };
-            pushEvent(eventData);
+            pushEvent(eventData, clearForm);
             // if (true) { // Change to check if event was successfully added
-            //     setEventName("");
-            //     setEventColor("#FFFFFF");
-            //     setEventDate(currentDate);
-            //     setStartTime(currentTime);
-            //     setEndTime(addTime(currentTime, duration));
-            //     setLocation("");
-            //     setDescription("");
-            //     setAvailability("Busy");
-            //     setPublicEvent(false);
-            //     setShowSuccess(true);
-            //     setTimeout(() => {
-            //         setFadeOut(true);
-            //     }, 2000);
-            //     setTimeout(() => {
-            //         setShowSuccess(false);
-            //         setFadeOut(false);
-            //     }, 2500);
-            // } else {
-            //     alert("Please login to add events.");
-            //     //alert("Failed to add event. Please try again.");
-            // }
         }
 
     return (
-        <main>
+        <main id="add-event-page">
             <h1>Add event</h1>
             <div id="add-page">
-                <div id="add-event" className="basic-box">
-                    <form onSubmit={handleSubmit}>
-                        <div id="event-name">
-                            <input type="text" placeholder="Event Title" value={eventName} onChange={(e) => setEventName(e.target.value)} />
-                            <input type="color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
-                        </div>
-                        <input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
-                        <div id="time-picker">
+                <div>
+                    <div id="add-event" className="basic-box">
+                        <form onSubmit={handleSubmit}>
+                            <div id="event-name">
+                                <input type="text" placeholder="Event Title" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+                                <input type="color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
+                            </div>
+                            <input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+                            <div id="time-picker">
+                                <div>
+                                    <label htmlFor="start-time">Start time</label>
+                                    <input type="time" id="start-time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                                </div>
+                                <div>
+                                    <label htmlFor="end-time">End time</label>
+                                <input type="time" id="end-time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />
+                            <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                             <div>
-                                <label htmlFor="start-time">Start time</label>
-                                <input type="time" id="start-time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                                <label htmlFor="availability">Availability:</label>
+                                <select id="availability" value={availability} onChange={(e) => setAvailability(e.target.value)}>
+                                    <option value="Busy">Busy</option>
+                                    <option value="Free">Free</option>
+                                </select>
                             </div>
                             <div>
-                                <label htmlFor="end-time">End time</label>
-                            <input type="time" id="end-time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+                                <label htmlFor="public-event">Public Event:</label>
+                                <input type="checkbox" id="public-event" checked={publicEvent} onChange={(e) => setPublicEvent(e.target.checked)} />
                             </div>
-                        </div>
-                        <input type="text" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />
-                        <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                        <div>
-                            <label htmlFor="availability">Availability:</label>
-                            <select id="availability" value={availability} onChange={(e) => setAvailability(e.target.value)}>
-                                <option value="Busy">Busy</option>
-                                <option value="Free">Free</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="public-event">Public Event:</label>
-                            <input type="checkbox" id="public-event" checked={publicEvent} onChange={(e) => setPublicEvent(e.target.checked)} />
-                        </div>
-                        <button type="button">Add from Google Calendar API</button>
-                        <div><input type="submit" defaultValue="Add Event" /></div>
-                    </form>
+                            <button type="button">Add from Google Calendar API</button>
+                            <div><input type="submit" defaultValue="Add Event" /></div>
+                        </form>
+                    </div>
+                    {showSuccess && <p className={fadeOut ? "fade-out" : ""}>Event added successfully!</p>}
                 </div>
-                {showSuccess && <p className={fadeOut ? "fade-out" : ""}>Event added successfully!</p>}
                 {/*}
                 <div id="add-task" className="basic-box">
                     <form>
@@ -185,10 +189,10 @@ export function AddEvent(props) {
                     </form>
                 </div>
                 */}
-            </div>
-            <div id="quote">
-                <p>"The key is not to prioritize what's on your schedule, but to schedule your priorities." - Stephen Covey</p>
-                <p>{quote}</p>
+                <div id="quote" className="basic-box">
+                    <p style={{ fontStyle: 'italic', fontSize: '14px' }}>"The key is not to prioritize what's on your schedule, but to schedule your priorities." - Stephen Covey</p>
+                    <p>{weather}</p>
+                </div>
             </div>
         </main>
     );

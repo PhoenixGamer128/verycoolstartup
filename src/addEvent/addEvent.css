@@ -1,6 +1,6 @@
 #add-page {
     display:flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     gap: 5px;
 }
 
@@ -49,6 +49,12 @@
 
 .fade-out {
     animation: fadeOut 0.5s forwards;
+}
+
+#quote {
+    font-style: italic;
+    width: 200px;
+    height: 180px;
 }
 
 @keyframes fadeOut {

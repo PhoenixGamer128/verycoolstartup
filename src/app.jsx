@@ -26,12 +26,12 @@ export default function App() {
         <nav name="nav-bar">
           <ul>
             <li id="nav-logo">Path for Eternity</li>
-            <li><NavLink className="button" to="">Home page</NavLink></li>
+            <li><NavLink className="button" to="">Home</NavLink></li>
             {authState === AuthState.Authenticated && (
               <>
-                <li><NavLink className="button" to="calendar">Calendar page</NavLink></li>
+                <li><NavLink className="button" to="calendar">Calendar</NavLink></li>
                 <li><NavLink className="button" to="addEvent">Add event</NavLink></li>
-                <li><NavLink className="button" to="compare">Compare events</NavLink></li>
+                <li><NavLink className="button" to="compare">Compare</NavLink></li>
               </>
             )}
             {/*<li><NavLink className="button" to="tasks">Tasks</NavLink></li>*/}

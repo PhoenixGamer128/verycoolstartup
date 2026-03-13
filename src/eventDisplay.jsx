@@ -71,9 +71,19 @@ export function RenderEvents(props) {
         fetch(eventsUrl, {
             credentials: 'include',
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.status === 404) {
+                    console.log('User not found');
+                    setEvents([]);
+                    return null;
+                }
+
+                return response.json();
+            })
             .then(data => {
-                setEvents(data);
+                if (data) {
+                    setEvents(data);
+                }
             })
             .catch(err => console.error('Failed to fetch events:', err));
     };

@@ -26,7 +26,7 @@ export function Login(props) {
                             <input id="register" type="button" onClick={RegisterUser} value="Register" />
                         )} */}
                         {props.authState === AuthState.Unauthenticated && (
-                            <Unauthenticated onAuthChange={props.onAuthChange} username={username} setUsername={setUsername} setPassword={setPassword} username={username} password={password} />
+                            <Unauthenticated onAuthChange={props.onAuthChange} username={username} setUsername={setUsername} setPassword={setPassword} password={password} />
                         )}
                         {/* {props.authState === AuthState.Authenticated && (
                             <input id="log-out" type="button" onClick={LogoutUser} value="Log out" />
