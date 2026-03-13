@@ -103,12 +103,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I completed this part.
+- [x] **Static middleware for frontend** - I think I did this part, I have middleware in my service folder for the backend, I think this is for the "frontend".
+- [x] **Calls to third party endpoints** - Although not pretty, you can find this in the Add Event page (intended to give the user more information about their surroundings), this is assuming their location is at BYU, cannot currently access user location.
+- [x] **Backend service endpoints** - I completed this part of the deliverable.
+- [x] **Frontend calls service endpoints** - There may be bugs with user authtentication, such as comparing a user that does not exist or loading events without adding one first. But there are frontend calls!
+- [x] **Supports registration, login, logout, and restricted endpoint** - I have registration, login, logout, but I do not have a restricted endpoint unfortunately (sadface).
 
 ## 🚀 DB deliverable
 
