@@ -107,7 +107,7 @@ apiRouter.get('/events/public/:username', verifyAuth, async (req, res) => {
         return;
     }
 
-    const publicEvents = await DB.getPublicEventsByUserId(selectedUser.id);
+    const publicEvents = await DB.getEventsByUserId(selectedUser.id);
     res.send(publicEvents);
 });
 
