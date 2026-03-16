@@ -62,6 +62,7 @@ export function RenderEvents(props) {
     const [events, setEvents] = React.useState([]);
     const [popupOpen, setPopupOpen] = React.useState(false);
     const [popupEvent, setPopupEvent] = React.useState(null);
+    const [calendarError, setCalendarError] = React.useState("No events to display.");
 
     const refreshEvents = () => {
         const eventsUrl = props.publicOnly // This is a bool to fetch current user or another user's public events
@@ -74,6 +75,7 @@ export function RenderEvents(props) {
             .then(response => {
                 if (response.status === 404) {
                     console.log('User not found');
+                    setCalendarError('User not found.');
                     setEvents([]);
                     return null;
                 }
@@ -94,7 +96,7 @@ export function RenderEvents(props) {
 
     if (!events || events.length === 0) {
         console.log("No events to display.");
-        return <div className="event-day"><div className="no-events">No events to display.</div></div>;
+        return <div className="event-day"><div className="no-events">{calendarError}</div></div>;
     }
     return (
         <div className="event-day">
