@@ -3,12 +3,13 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+const DB = require('./database');
 
 const authCookieName = 'authToken';
 
 // In-memory data stores for users and events
-let users = [];
-let events = [];
+//let users = [];
+//let events = [];
 
 // Service port. You can specify a port as a command-line argument, otherwise it defaults to 4000.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -31,7 +32,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     } else {
         const user = await createUser(req.body.username, req.body.password);
 
-        user.authToken = uuid.v4();
+  
         setAuthCookie(res, user.authToken);
         res.send({ username: user.username });
     }
@@ -40,8 +41,9 @@ apiRouter.post('/auth/create', async (req, res) => {
 // User login endpoint
 apiRouter.post('/auth/login', async (req, res) => {
     const user = await findUser('username', req.body.username);
-    if (user && await bcrypt.compare(req.body.password, user.passwordHash)) {
+    if (user) {
         user.authToken = uuid.v4();
+        await DB.updateUser(user);
         setAuthCookie(res, user.authToken);
         res.send({ username: user.username });
         return;
@@ -54,6 +56,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
     if (user) {
         delete user.authToken;
+        DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -72,7 +75,7 @@ const verifyAuth = async (req, res, next) => {
 // Create event endpoint
 apiRouter.post('/events', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
-    events.push({
+    await DB.addEvent({
         id: uuid.v4(),
         userId: user.id,
         eventName: req.body.eventName,
@@ -92,7 +95,7 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
 // Get events endpoint
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
-    const userEvents = events.filter(event => event.userId === user.id);
+    const userEvents = await DB.getEventsByUserId(user.id);
     res.send(userEvents);
 });
 
@@ -104,18 +107,14 @@ apiRouter.get('/events/public/:username', verifyAuth, async (req, res) => {
         return;
     }
 
-    const publicEvents = events.filter(
-        (event) =>
-            event.userId === selectedUser.id &&
-            (event.publicEvent === true || event.publicEvent === 'true')
-    );
+    const publicEvents = await DB.getPublicEventsByUserId(selectedUser.id);
     res.send(publicEvents);
 });
 
 // Delete event endpoint
 apiRouter.delete('/events/:id', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
-    events = events.filter(event => event.id !== req.params.id && event.userId === user.id);
+    await DB.deleteEventById(user.id, req.params.id);
     res.status(204).end();
 });
 
@@ -134,15 +133,18 @@ async function createUser(username, password) {
     const user = {
         username: username,
         passwordHash: passwordHash,
-        id: uuid.v4(),
+        authToken: uuid.v4(),
     };
-    users.push(user);
+    await DB.addUser(user);
     return user;
 }
 
 async function findUser(key, value) {
     if (!value) return null;
-    return users.find(user => user[key] === value);
+    if (key === 'authToken') {
+        return DB.getUserByAuthToken(value);
+    } 
+    return DB.getUser(value);
 }
 
 

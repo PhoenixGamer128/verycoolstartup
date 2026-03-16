@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
 
-const url = `mongodb+srv://${config.username}:${config.password}@${config.clusterUrl}/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}/?retryWrites=true&w=majority`;
 const client = new MongoClient(url);
 const db = client.db('verycoolstartup');
 const usersCollection = db.collection('users');
@@ -43,8 +43,8 @@ function getEventsByUserId(userId) {
     return eventsCollection.find({ userId: userId }).toArray();
 }
 
-function deleteEventById(eventId) {
-    return eventsCollection.deleteOne({ id: eventId });
+function deleteEventById(userID, eventId) {
+    return eventsCollection.deleteOne({ id: eventId, userId: userID });
 }
 
 module.exports = {
