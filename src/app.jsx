@@ -38,6 +38,7 @@ export default function App() {
             <li><NavLink className="button" to="about">About</NavLink></li>
             <li><NavLink className="button" to="https://simon.pathforeternity.click" target="_blank">Simon</NavLink></li>
           </ul>
+          <li style={{ margin: '10px 40px', fontSize: '1.2em' }}>{username}</li>
         </nav>
 
         <Routes>
@@ -51,8 +52,11 @@ export default function App() {
         </Routes>
 
         <footer>
-          <div>by Hugo Whitaker</div>
-          <a href="https://github.com/PhoenixGamer128/verycoolstartup">GitHub</a>
+          <div>
+            <div>by Hugo Whitaker</div>
+            <a href="https://github.com/PhoenixGamer128/verycoolstartup">GitHub</a>
+          </div>
+
         </footer>
       </div>
     </BrowserRouter>

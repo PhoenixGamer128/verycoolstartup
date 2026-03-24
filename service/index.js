@@ -77,7 +77,7 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
     await DB.addEvent({
         id: uuid.v4(),
-        userId: user.id,
+        userId: user.username,
         eventName: req.body.eventName,
         eventColor: req.body.eventColor,
         eventDate: req.body.eventDate,
@@ -95,7 +95,7 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
 // Get events endpoint
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('authToken', req.cookies[authCookieName]);
-    const userEvents = await DB.getEventsByUserId(user.id);
+    const userEvents = await DB.getEventsByUserId(user.username);
     res.send(userEvents);
 });
 

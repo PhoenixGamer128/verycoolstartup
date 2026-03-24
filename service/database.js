@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
+const e = require('express');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}/?retryWrites=true&w=majority`;
 const client = new MongoClient(url);
@@ -40,7 +41,13 @@ async function addEvent(event) {
 }
 
 function getEventsByUserId(userId) {
-    return eventsCollection.find({ userId: userId }).toArray();
+  events = eventsCollection.find({ userId: userId }).toArray();
+  if (events) {
+    if (events.length > 0) {
+      return events.filter(event => event.userId === userId);
+    }
+    return eventsCollection.find({ userId: userId }).toArray()
+  }
 }
 
 function deleteEventById(userID, eventId) {
