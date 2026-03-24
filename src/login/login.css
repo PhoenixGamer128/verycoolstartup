@@ -4,12 +4,18 @@
     justify-content: center;
 }
 
+#eternity {
+    font-family: 'Carattere', cursive;
+    font-size: 1.5em;
+}
+
 #sign-in {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     max-width: 400px;
+    color: white;
 }
 
 #sign-in-options {

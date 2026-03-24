@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Parisienne&family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
-    --baseColor: skyblue;
-    --buttonColor: lightblue;
-    --navColor: lightgray;
-    --footerColor: lightgray;
-    --darkColor: rgb(80, 154, 183);
+    --baseColor: rgb(149, 163, 197);
+    --buttonColor: rgb(144, 180, 224);
+    --navColor: rgb(84, 99, 135);
+    --footerColor: var(--navColor);
+    --darkColor: rgb(104, 112, 133);
     --baseFont: 'Rubik', sans-serif;
+    --backgroundColor: rgb(230, 230, 230);
+    background-color: var(--backgroundColor);
 }
 
 
@@ -15,7 +20,7 @@
     flex-direction: column;
     margin: 0px;
     font-family: var(--baseFont);
-    background-color: white;
+    background-color: var(--backgroundColor);
 }
 
 main {
@@ -24,8 +29,10 @@ main {
 }
 
 h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
+    font-size: 2.5em;
+    margin: 0.4em 0;
+    font-family: "roboto slab", serif;
+    font-weight: 400;
 }
 
 .basic-box {
@@ -66,8 +73,11 @@ input[type='submit']:hover, input[type='button']:hover {
 }
 
 nav {
+    display: flex;
     flex: 0 0 auto;
     background-color: var(--navColor);
+    color: white;
+    justify-content: space-between;
 }
 
 footer {
@@ -77,6 +87,12 @@ footer {
     width: 100%;
     border-top: 1px solid black;
     padding: 5px;
+    color: white;
+}
+
+footer a {
+    color: var(--buttonColor);
+    text-decoration: none;
 }
 
 #banner {
@@ -109,6 +125,7 @@ nav .button {
     padding: 0px 8px;
     text-decoration: none;
     height: 50px;
+    color: black;
 }
 
 nav li {

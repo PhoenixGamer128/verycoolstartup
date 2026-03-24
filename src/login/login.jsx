@@ -15,7 +15,7 @@ export function Login(props) {
     return (
         <main id="front-page">
             <div id="sign-in" className="sign-in basic-box">
-                <h1>Path for Eternity</h1>
+                <h1>Path for <span id="eternity">Eternity</span></h1>
                 <form>
                     
                     <div id="sign-in-options">
