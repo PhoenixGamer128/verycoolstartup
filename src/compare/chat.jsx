@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 
 function Chat({ websocket }) {
     const [name, setName] = React.useState("");
@@ -37,7 +36,7 @@ function Message({ name, websocket }) {
 
     function sendMsg() {
         if (name && message) {
-            websocket.send(`${name}: ${message}`);
+            websocket.sendMessage(name, message);
             setMessage("");
         }
     }
@@ -77,3 +76,44 @@ function Conversation({ websocket }) {
         </main>
     )
 }
+
+class ChatClient {
+    observers = [];
+    connected = false;
+
+    constructor() {
+        this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        this.websocket = new WebSocket(`${this.protocol}://${window.location.host}/ws`);
+
+        this.websocket.onopen = () => {
+            this.notifyObservers('system', 'websocket', 'connected');
+            this.connected = true;
+        };
+
+        this.websocket.onmessage = async (event) => {
+            const text = await event.data.text();
+            const chat = JSON.parse(text);
+            this.notifyObservers('received', chat.from, chat.message);
+        };
+
+        this.websocket.onclose = () => {
+            this.notifyObservers('system', 'websocket', 'disconnected');
+            this.connected = false;
+        };
+    }
+
+    sendMessage(name, msg) {
+        this.notifyObservers('sent', 'me', msg);
+        this.websocket.send(JSON.stringify({ from: name, message: msg }));
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    notifyObservers(event, from, message) {
+        this.observers.forEach((observer) => observer({ event, from, message }));
+    }
+}
+
+export { Chat, ChatClient };

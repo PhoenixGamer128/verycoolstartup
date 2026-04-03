@@ -3,7 +3,7 @@ const { WebSocketServer, WebSocket } = require('ws');
 function peerProxy(httpServer) {
     const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
 
-    socket.on('connection', (ws) => {
+    wss.on('connection', (socket) => {
         console.log('New WebSocket connection established');
         socket.isAlive = true;
 
@@ -16,7 +16,7 @@ function peerProxy(httpServer) {
         });
 
 
-        ws.on('pong', () => {
+        socket.on('pong', () => {
             socket.isAlive = true;
         });
 
