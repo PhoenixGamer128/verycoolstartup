@@ -32,4 +32,4 @@ function peerProxy(httpServer) {
     });
 }
 
-module.exports = peerProxy;
+module.exports = { peerProxy };
