@@ -4,6 +4,7 @@ const app = express();
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const DB = require('./database');
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'authToken';
 
@@ -11,8 +12,8 @@ const authCookieName = 'authToken';
 //let users = [];
 //let events = [];
 
-// Service port. You can specify a port as a command-line argument, otherwise it defaults to 4000.
-const port = process.argv.length > 2 ? process.argv[2] : 4000;
+// Service port. You can specify a port as a command-line argument, otherwise it defaults to 3000.
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // Serve static files from the 'public' directory (for frontend assets)
 app.use(express.static('public'));
@@ -156,10 +157,6 @@ function setAuthCookie(res, authToken) {
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
     });
 }
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
 
 const httpService = app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
