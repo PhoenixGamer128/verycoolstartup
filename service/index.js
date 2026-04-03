@@ -160,3 +160,9 @@ function setAuthCookie(res, authToken) {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+const httpService = app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});
+
+peerProxy(httpService);
