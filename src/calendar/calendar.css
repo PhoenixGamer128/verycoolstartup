@@ -1,6 +1,5 @@
 /* Page-specific styling */
-
-
+@value --lightColor from '../styles.css';
 
 
 #calendar-main {
@@ -31,7 +30,7 @@
     margin-top: 16px;
     margin-bottom: 50px;
     border: 1px solid lightgray;
-    background-color: white;
+    background-color: var(--lightColor);
 }
 
 .event-content {

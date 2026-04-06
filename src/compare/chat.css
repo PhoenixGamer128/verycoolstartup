@@ -1,14 +1,37 @@
+@value --baseColor from '../styles.css';
+@value --buttonColor from '../styles.css';
+@value --darkColor from '../styles.css';
 
+
+#chat-window {
+    border: 1px solid var(--darkColor);
+    background-color: var(--baseColor);
+    padding: 10px;
+    width: 400px;
+    margin-top: 20px;
+}
 
 #chat-fieldset {
-    border: 1px solid #ccc;
     padding: 0 10px;
     margin-top: 0;
+    border-top: 1px solid var(--darkColor);
+}
+
+button {
+    margin-top: 5px;
+    background-color: var(--buttonColor);
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
 .conversation {
-    border: 1px solid #ccc;
     padding: 10px;
     height: 200px;
     overflow-y: auto;
+}
+
+.chat-window {
+    padding: 0px;
 }

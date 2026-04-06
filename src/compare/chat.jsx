@@ -5,18 +5,17 @@ function Chat({ websocket, name }) {
     const [chatName, setChatName] = React.useState(name || "");
 
     return (
-        <main>
+        <main id="chat-window">
             {/*<Name updateName={setName} />*/}
             <Conversation websocket={websocket} />
             <Message name={chatName} websocket={websocket} />
-            <p>Name: {chatName}</p>
         </main>
     )
 }
 
 function Name({ updateName }) {
     return (
-        <main>
+        <main className='chat-window'>
             <div className='name'>
                 <fieldset id='name-fieldset'>
                     <legend>Name</legend>
@@ -48,7 +47,7 @@ function Message({ name, websocket }) {
         disabled = !websocket.connected;
     }, [websocket.connected]);
     return (
-        <main>
+        <main className='chat-window'>
             <fieldset id='chat-fieldset'>
                 {/*<legend>Chat</legend>*/}
                 <input disabled={disabled} type='text' value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={doneMessage} />
@@ -93,12 +92,12 @@ function Conversation({ websocket }) {
 
     const chatEls = chats.map((chat, index) => (
         <div key={index}>
-            <span className={chat.event}>{chat.from}</span> {chat.message}
+            <span className={chat.event}>{chat.from}:</span> {chat.message}
         </div>
     ));
 
     return (
-        <main className='conversation-main'>
+        <main className='conversation-main chat-window'>
             <div className='conversation' ref={containerRef} onScroll={updateAutoScrollFlag}>
                 {chatEls}
             </div>

@@ -9,6 +9,7 @@
     --navColor: rgb(84, 99, 135);
     --footerColor: var(--navColor);
     --darkColor: rgb(104, 112, 133);
+    --lightColor: rgb(204, 212, 231);
     --baseFont: 'Rubik', sans-serif;
     --backgroundColor: rgb(230, 230, 230);
     background-color: var(--backgroundColor);
