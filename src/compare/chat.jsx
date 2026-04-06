@@ -1,13 +1,15 @@
 import React from "react";
+import "./chat.css";
 
-function Chat({ websocket }) {
-    const [name, setName] = React.useState("");
+function Chat({ websocket, name }) {
+    const [chatName, setChatName] = React.useState(name || "");
 
     return (
         <main>
-            <Name updateName={setName} />
-            <Message name={name} websocket={websocket} />
+            {/*<Name updateName={setName} />*/}
             <Conversation websocket={websocket} />
+            <Message name={chatName} websocket={websocket} />
+            <p>Name: {chatName}</p>
         </main>
     )
 }
@@ -41,13 +43,16 @@ function Message({ name, websocket }) {
         }
     }
 
-    const disabled = name === '' || !websocket.connected;
+    let disabled = !name;
+    React.useEffect(() => {
+        disabled = !websocket.connected;
+    }, [websocket.connected]);
     return (
         <main>
             <fieldset id='chat-fieldset'>
-                <legend>Chat</legend>
+                {/*<legend>Chat</legend>*/}
                 <input disabled={disabled} type='text' value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={doneMessage} />
-                <button disabled={disabled} onClick={sendMsg}>Send</button>
+                <button disabled={disabled} onClick={sendMsg}>Send Message</button>
             </fieldset>
         </main>
     )
@@ -55,12 +60,36 @@ function Message({ name, websocket }) {
 
 function Conversation({ websocket }) {
     const [chats, setChats] = React.useState([]);
+    const THRESHOLD = 20;
+    const containerRef = React.useRef(null);
+    const shouldAutoScrollRef = React.useRef(true);
 
     React.useEffect(() => {
         websocket.addObserver((chat) => {
             setChats((prevChats) => [...prevChats, chat]);
         });
     }, [websocket]);
+
+    function updateAutoScrollFlag() {
+        const el = containerRef.current;
+        if (!el) {
+            return;
+        }
+
+        const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
+        shouldAutoScrollRef.current = distanceFromBottom <= THRESHOLD;
+    }
+
+    React.useEffect(() => {
+        const el = containerRef.current;
+        if (!el) {
+            return;
+        }
+
+        if (shouldAutoScrollRef.current) {
+            el.scrollTop = el.scrollHeight;
+        }
+    }, [chats]);
 
     const chatEls = chats.map((chat, index) => (
         <div key={index}>
@@ -69,8 +98,8 @@ function Conversation({ websocket }) {
     ));
 
     return (
-        <main>
-            <div className='conversation'>
+        <main className='conversation-main'>
+            <div className='conversation' ref={containerRef} onScroll={updateAutoScrollFlag}>
                 {chatEls}
             </div>
         </main>
@@ -86,8 +115,8 @@ class ChatClient {
         this.websocket = new WebSocket(`${this.protocol}://${window.location.host}/ws`);
 
         this.websocket.onopen = () => {
-            this.notifyObservers('system', 'websocket', 'connected');
             this.connected = true;
+            this.notifyObservers('system', 'websocket', 'connected');
         };
 
         this.websocket.onmessage = async (event) => {
@@ -97,8 +126,9 @@ class ChatClient {
         };
 
         this.websocket.onclose = () => {
-            this.notifyObservers('system', 'websocket', 'disconnected');
             this.connected = false;
+            this.notifyObservers('system', 'websocket', 'disconnected');
+
         };
     }
 
