@@ -25,7 +25,7 @@ export function Compare(props) {
                 <input type="text" placeholder="Enter username to compare with" value={user2input} onChange={(e) => setUser2Input(e.target.value)} />
                 <button type="submit">Compare</button>
             </form>
-            <Chat websocket={chatClient} />
+            <Chat websocket={chatClient} name={props.username} />
             <div className="event-window">
                 <RenderEvents username={props.username} numColumns={user2 ? 2 : 1} columnID={0} renderDate={currentDate} />
                 {user2 && <RenderEvents username={user2} publicOnly={true} numColumns={2} columnID={1} renderDate={currentDate} />}
