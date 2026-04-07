@@ -121,8 +121,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I completed this part of the deliverable.
+- [x] **Frontend makes WebSocket connection** - I completed this part of the deliverable.
+- [x] **Data sent over WebSocket connection** - I completed this part of the deliverable.
+- [x] **WebSocket data displayed** - This is found as the chat part, I don't know how to save chat history, but it works!
+- [x] **Application is fully functional** - I completed this part of the deliverable.
