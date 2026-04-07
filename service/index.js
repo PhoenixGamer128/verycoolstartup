@@ -12,8 +12,8 @@ const authCookieName = 'authToken';
 //let users = [];
 //let events = [];
 
-// Service port. You can specify a port as a command-line argument, otherwise it defaults to 3000.
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+// Service port. You can specify a port as a command-line argument, otherwise it defaults to 4000.
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // Serve static files from the 'public' directory (for frontend assets)
 app.use(express.static('public'));
