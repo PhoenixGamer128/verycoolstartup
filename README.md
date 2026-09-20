@@ -1,14 +1,8 @@
-# Your startup name here
+# Path For Eternity Calendar Startup
 
-[My Notes](notes.md)
+My website: [Path for Eternity](startup.pathforeternity.click)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-> [!NOTE]
-> If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
-> Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
-> Note left for personal use.
+This is an application that allows different users to keep track of their events with their descriptions. The future goal of this app is to include a map that allows users to input their favorite locations and contacts. Another utility is to keep track of certain goals, such as exercising for a certain number of days per week. This is the base for the application, that stores event information that can be used to connect to these future ideas.
 
 ## 🚀 Specification Deliverable
 
@@ -26,12 +20,11 @@ Have you ever had a stressful day because of all the things that you had to do, 
 
 ### Design
 
-| Main Page | Event Add Page | Add Other User's Schedule |
-| --- | --- | --- |
-|![Design image 1](public/csDesign1.png) | ![Design image 2](public/csDesign2.png) | ![Design image 3](public/csDesign3.png)
+| Main Page                               | Event Add Page                          | Add Other User's Schedule               |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| ![Design image 1](public/csDesign1.png) | ![Design image 2](public/csDesign2.png) | ![Design image 3](public/csDesign3.png) |
 
 The design will have a main page with the calendar with buttons changing the page (or as an overlay) for specific actions. Events are color-coded, marked by shapes, to show what type of event it is. The design is to be simple to allow users not be overwhelmed by lots of information
-
 
 ### Key features
 
@@ -126,3 +119,5 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Data sent over WebSocket connection** - I completed this part of the deliverable.
 - [x] **WebSocket data displayed** - This is found as the chat part, I don't know how to save chat history, but it works!
 - [x] **Application is fully functional** - I completed this part of the deliverable.
+
+[My Notes](notes.md)
